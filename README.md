@@ -44,6 +44,7 @@
 - メモ機能
   - 詳細機能
   - 事件登録
+    - 書籍名
     - 事件名
     - タグ
     - メモ
@@ -118,3 +119,47 @@ topページ
 ### メールアドレス・パスワード変更確認項目
 - [] メールアドレス
 - [O] パスワード
+
+### ER図
+（ER図のスクリーンショットを貼り付けてください）
+ [![Image from Gyazo](https://i.gyazo.com/b3bf00374c3ccb58a24d2b800cba5627.png)](https://gyazo.com/b3bf00374c3ccb58a24d2b800cba5627)
+### テーブル詳細
+### usersテーブル(ユーザー情報)
+- email(string)ユーザーのメールアドレス
+- encrypted_password(string)ログイン用パスワード
+### Incidentsテーブル(事件情報)
+- incident_ID(integer)ユーザーid(外部キー)
+- book(string)書籍名
+- name(string)事件名
+- tag(integer)タグ名
+- body(text)事件説明
+### IncidentTimesTableテーブル(事件時系列)
+- incident_ID(integer)事件id(外部キー)
+- year(integer)西暦値
+- month(integer)月値
+- date(integer)日付値
+- hour(integer)時間値
+- minuts(integer)分値
+- second(integer)秒値
+- body(string)時系列説明
+### CharactersTableテーブル(登場人物)
+- incident_ID(integer)事件id(外部キー)
+- name(string)人物性別
+- age(integer)人物年齢
+- job(string)人物職業
+- body(text)人物説明
+### MemosTableテーブル(メモ)
+- incident_ID(integer)事件id(外部キー)
+- tag(integer)タグ
+- body(string)メモ内容
+
+
+### ER図の注意点
+- [o] 最新のER図スクリーンショットがPRに掲載されているか
+- [o] テーブル名は複数形になっているか
+- [o] カラムの型は記載されているか
+- [o] 外部キーは適切か
+- [o] リレーションは正しく描かれているか
+- [o] 多対多の関係になっていないか
+- [o] STIを使用していないか
+- [o] postsテーブルに post_name のような命名をしていないか
