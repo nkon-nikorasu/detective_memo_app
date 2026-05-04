@@ -122,7 +122,7 @@ topページ
 
 ### ER図
 （ER図のスクリーンショットを貼り付けてください）
- [![Image from Gyazo](https://i.gyazo.com/b3bf00374c3ccb58a24d2b800cba5627.png)](https://gyazo.com/b3bf00374c3ccb58a24d2b800cba5627)
+ [![Image from Gyazo](https://i.gyazo.com/4fafebf0f6ecfe5e669656a1b8e90ff3.png)](https://gyazo.com/4fafebf0f6ecfe5e669656a1b8e90ff3)
 ### テーブル詳細
 ### usersテーブル(ユーザー情報)
 - email(string)ユーザーのメールアドレス
@@ -131,7 +131,7 @@ topページ
 - incident_ID(integer)ユーザーid(外部キー)
 - book(string)書籍名
 - name(string)事件名
-- tag(integer)タグ名
+- tag(integer)タグ
 - body(text)事件説明
 ### IncidentTimesTableテーブル(事件時系列)
 - incident_ID(integer)事件id(外部キー)
@@ -144,14 +144,15 @@ topページ
 - body(string)時系列説明
 ### CharactersTableテーブル(登場人物)
 - incident_ID(integer)事件id(外部キー)
-- name(string)人物性別
+- name(string)人物名前
+- gender(integer)人物性別
 - age(integer)人物年齢
 - job(string)人物職業
 - body(text)人物説明
 ### MemosTableテーブル(メモ)
 - incident_ID(integer)事件id(外部キー)
 - tag(integer)タグ
-- body(string)メモ内容
+- body(text)メモ内容
 
 
 ### ER図の注意点
