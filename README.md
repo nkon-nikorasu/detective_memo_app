@@ -86,7 +86,7 @@
 - DB：PostgreSQL
 - cssフレームワーク: Tailwind
 - デプロイ先：Render
-- 使用予定ライブラリ：device,kaminari
+- 使用予定ライブラリ：device,kaminari,acts_as_list
 ### 画面遷移図
 Figma：https://www.figma.com/design/qLKM0gSeoalkGSAJpm51tw/%E7%84%A1%E9%A1%8C?node-id=0-1&t=M3eWzAyUhTCbeBFr-1
 
@@ -122,7 +122,7 @@ topページ
 
 ### ER図
 （ER図のスクリーンショットを貼り付けてください）
- [![Image from Gyazo](https://i.gyazo.com/4fafebf0f6ecfe5e669656a1b8e90ff3.png)](https://gyazo.com/4fafebf0f6ecfe5e669656a1b8e90ff3)
+ [![Image from Gyazo](https://i.gyazo.com/740bcdab751f772cecaf20ab75b8f6d0.png)](https://gyazo.com/740bcdab751f772cecaf20ab75b8f6d0)
 ### 本サービスの概要（700文字以内）
 このアプリはミステリー小説を読むよむ20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
 ### MVPで実装する予定の機能
@@ -150,6 +150,7 @@ topページ
 - minuts(integer)分値
 - second(integer)秒値
 - body(string)時系列説明
+- position(integer)並べ替え用
 ### CharactersTableテーブル(登場人物)
 - incident_ID(integer)事件id(外部キー)
 - name(string)人物名前
