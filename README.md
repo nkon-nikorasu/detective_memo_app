@@ -121,8 +121,7 @@ topページ
 - [O] パスワード
 
 ### ER図
-（ER図のスクリーンショットを貼り付けてください）
- [![Image from Gyazo](https://i.gyazo.com/740bcdab751f772cecaf20ab75b8f6d0.png)](https://gyazo.com/740bcdab751f772cecaf20ab75b8f6d0)
+[![Image from Gyazo](https://i.gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e.png)](https://gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e)
 ### 本サービスの概要（700文字以内）
 このアプリはミステリー小説を読むよむ20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
 ### MVPで実装する予定の機能
@@ -136,30 +135,30 @@ topページ
 - email(string)ユーザーのメールアドレス
 - encrypted_password(string)ログイン用パスワード
 ### Incidentsテーブル(事件情報)
-- incident_ID(integer)ユーザーid(外部キー)
+- incident_id(integer)ユーザーid(外部キー)
 - book(string)書籍名
 - name(string)事件名
 - tag(integer)タグ
 - body(text)事件説明
 ### IncidentTimesTableテーブル(事件時系列)
-- incident_ID(integer)事件id(外部キー)
-- year(integer)西暦値
-- month(integer)月値
-- date(integer)日付値
-- hour(integer)時間値
-- minuts(integer)分値
-- second(integer)秒値
+- incident_id(integer)事件id(外部キー)
+- year(integer)(null)西暦値
+- month(integer)(null)月値
+- date(integer)(null)日付値
+- hour(integer)(null)時間値
+- minuts(integer)(null)分値
+- second(integer)(null)秒値
 - body(string)時系列説明
 - position(integer)並べ替え用
 ### CharactersTableテーブル(登場人物)
-- incident_ID(integer)事件id(外部キー)
+- incident_id(integer)事件id(外部キー)
 - name(string)人物名前
 - gender(integer)人物性別
 - age(integer)人物年齢
-- job(string)人物職業
+- role(string)人物職業
 - body(text)人物説明
 ### MemosTableテーブル(メモ)
-- incident_ID(integer)事件id(外部キー)
+- incident_id(integer)事件id(外部キー)
 - tag(integer)タグ
 - body(text)メモ内容
 
