@@ -8,7 +8,7 @@
     
   <% if user_signed_in?%>
     <div class="flex items-center gap-8 ml-auto w-50 mr-4">
-      <%= link_to '事件一覧', "/" %>
+      <%= link_to '事件一覧', incidents_path %>
       <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
     </div>
   <% else %>
