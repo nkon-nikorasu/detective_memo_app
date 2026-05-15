@@ -1,0 +1,14 @@
+<div class="incident-id-<%= incident.id %> flex border h-20 mx-2 my-2">
+  <div class="flex-1 flex items-center justify-center w-auto">
+    <p class="text-3xl"><%= t('.book')%>: <%=incident.book %></p>
+  </div>
+  <div class="flex-1 flex flex-col justify-around">
+    <p><%= t('.tag')%>: <%=incident.tag_i18n %></p>
+    <p class="font-sans"><%= t('.created_at')%>: <%=local_time(incident.created_at)%></p>
+  </div>
+  <div class="flex-1 flex items-center justify-around text-center">
+    <%= link_to "詳細", incidents_path, class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border" %>
+    <%= link_to "編集", incidents_path, class: "flex flex-1 bg-green-200 rounded-xl h-full mx-2 items-center justify-center" %>
+    <%= link_to "削除", incidents_path, class: "flex flex-1 bg-red-200 rounded-xl h-full mx-2 items-center justify-center" %>
+  </div>
+</div>

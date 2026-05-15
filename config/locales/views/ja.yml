@@ -1,4 +1,14 @@
 ja:
   incidents:
     index:
-      title: 事件一覧
+      title: 事件記録一覧
+    incident:
+      book: 書籍名
+      name: 事件名
+      tag: タグ
+      created_at: 作成日
+  header:
+    login: ログイン
+    logout: ログアウト
+    sign_up: 新規登録
+    incidents: 事件記録一覧
