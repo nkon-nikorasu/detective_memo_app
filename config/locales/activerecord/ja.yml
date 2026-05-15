@@ -7,11 +7,13 @@ ja:
         book: 書籍名
         name: 事件名
         body: 説明
-        tag:
-          murder: 殺人
-          solving: 謎解き
-          theft: 窃盗
-          accident: 事故
-          suicide: 自殺
-          terrorism: テロ
-          others: その他
+  enums:
+    incident:
+      tag:
+        murder: 殺人
+        solving: 謎解き
+        theft: 窃盗
+        accident: 事故
+        suicide: 自殺
+        terrorism: テロ
+        others: その他
