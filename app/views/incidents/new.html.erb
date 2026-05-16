@@ -1,3 +1,25 @@
-<div>
-  <p>事件新規登録</p>
+<div class="flex flex-col justify-center">
+  <div class="border-b-2 text-center mx-2">
+    <h2 class="text-3xl"><%= t('.title') %></h2>
+  </div>
+  <%= form_with model: @incident, class: "flex flex-col items-center" do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :book %>
+      <%= f.text_field :book, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "書籍名を入力してください＊必須" %>
+    </div>
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "事件名を入力してください＊任意" %>
+    </div>
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :tag %>
+      <%= f.select :tag, Incident.tags.keys.map { |k| [t("enums.incident.tag.#{k}"), k] }, {include_blank: "指定なし"},class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "書籍名を入力してください＊必須" %>
+    </div>
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "border-2 p-2 rounded-xl", placeholder: "説明を記述してください＊任意", size: "100x20" %>
+    </div>
+    <%= f.submit class: "border-2 rounded-xl h-10 w-20" %>
+  <% end %>
 </div>
