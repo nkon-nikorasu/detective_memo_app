@@ -1,5 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_incident, only: [:edit, :update]
   def index
     @incidents = current_user.incidents.order(created_at: :desc).page(params[:page]).per(5)
   end
@@ -10,7 +11,6 @@ class IncidentsController < ApplicationController
 
   def create
     @incident = current_user.incidents.build(incident_params)
-    puts @incident
     if @incident.save
       redirect_to edit_incident_path(@incident), notice: t('defaults.flash_message.created', item: Incident.model_name.human)
     else
@@ -20,12 +20,24 @@ class IncidentsController < ApplicationController
   end
 
   def edit
-    @incident = current_user.incidents.find(params[:id])
+  end
+
+  def update
+    if @incident.update(incident_params)
+      redirect_to edit_incident_path(@incident), notice: t('defaults.flash_message.updated', item: Incident.model_name.human)
+    else
+      flash.now[:alert] = t('defaults.flash_message.not_updated', item: Incident.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
   def incident_params
     params.require(:incident).permit(:book, :name, :tag, :body)
+  end
+
+  def set_incident
+    @incident = current_user.incidents.find(params[:id])
   end
 end
