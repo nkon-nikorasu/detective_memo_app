@@ -1,7 +1,18 @@
 ja:
+  defaults:
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+  helpers:
+    submit:
+      create: 作成する
+      submit: 保存
+      update: 更新
   incidents:
     index:
       title: 事件記録一覧
+    new:
+      title: 事件新規作成
     incident:
       book: 書籍名
       name: 事件名

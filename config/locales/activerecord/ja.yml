@@ -1,10 +1,11 @@
 ja:
   activerecord:
     models:
-      incident: 事件
+      incident: 事件記録
     attributes:
       incident:
         book: 書籍名
+        tag: タグ
         name: 事件名
         body: 説明
   enums:
