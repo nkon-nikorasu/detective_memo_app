@@ -12,11 +12,15 @@ class IncidentsController < ApplicationController
     @incident = current_user.incidents.build(incident_params)
     puts @incident
     if @incident.save
-      redirect_to incidents_path, notice: t('defaults.flash_message.created', item: Incident.model_name.human)
+      redirect_to edit_incident_path(@incident), notice: t('defaults.flash_message.created', item: Incident.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_created', item: Incident.model_name.human)
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @incident = current_user.incidents.find(params[:id])
   end
 
   private
