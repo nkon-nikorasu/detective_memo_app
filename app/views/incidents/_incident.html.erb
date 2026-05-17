@@ -9,6 +9,6 @@
   <div class="flex-1 flex items-center justify-around text-center">
     <%= link_to "詳細", incidents_path, class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border" %>
     <%= link_to "編集", edit_incident_path(incident), class: "flex flex-1 bg-green-200 rounded-xl h-full mx-2 items-center justify-center" %>
-    <%= link_to "削除", incidents_path, class: "flex flex-1 bg-red-200 rounded-xl h-full mx-2 items-center justify-center" %>
+    <%= link_to "削除", incident_path(incident), data: {turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm')}, class: "flex flex-1 bg-red-200 rounded-xl h-full mx-2 items-center justify-center" %>
   </div>
 </div>
