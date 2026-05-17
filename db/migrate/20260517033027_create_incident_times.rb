@@ -7,7 +7,8 @@ class CreateIncidentTimes < ActiveRecord::Migration[7.2]
       t.integer :hour
       t.integer :minuts
       t.integer :second
-      t.string :body
+      t.string :body, null: false
+      t.integer :position
       t.references :incident, foreign_key: true
       t.timestamps
     end
