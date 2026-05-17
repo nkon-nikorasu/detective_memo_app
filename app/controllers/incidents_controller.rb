@@ -1,6 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_incident, only: [:edit, :update]
+  before_action :set_incident, only: [:edit, :update, :destroy]
   def index
     @incidents = current_user.incidents.order(created_at: :desc).page(params[:page]).per(5)
   end
@@ -29,6 +29,11 @@ class IncidentsController < ApplicationController
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Incident.model_name.human)
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @incident.destroy!
+    redirect_to incidents_path, notice: t('defaults.flash_message.deleted', item: Incident.model_name.human), status: :see_other
   end
 
   private
