@@ -1,10 +1,12 @@
 ja:
   defaults:
+    delete_confirm: "事件記録を削除しますか?"
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
   helpers:
     submit:
       create: 作成する
