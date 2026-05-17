@@ -22,11 +22,14 @@ ja:
       title: 事件記録新規作成
     edit:
       title: 事件整理
+      incident_time: 時系列表作成
     incident:
       book: 書籍名
       name: 事件名
       tag: タグ
       created_at: 作成日
+  incident_time:
+    edit: 時系列表編集
   header:
     login: ログイン
     logout: ログアウト

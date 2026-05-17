@@ -2,12 +2,21 @@ ja:
   activerecord:
     models:
       incident: 事件記録
+      incident_time: タイムレコード
     attributes:
       incident:
         book: 書籍名
         tag: タグ
         name: 事件名
         body: 説明
+      incident_time:
+        year: 年
+        month: 月
+        date: 日
+        hour: 時
+        minuts: 分
+        second: 秒
+        body: 行動・移動
   enums:
     incident:
       tag:
