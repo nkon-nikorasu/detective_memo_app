@@ -1,0 +1,2 @@
+class IncidentTime < ApplicationRecord
+end
