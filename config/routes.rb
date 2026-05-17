@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "start_pages#top"
-  resources :incidents
+  resources :incidents do
+    resources :incident_times, only: %i[ create edit update destroy ], shallow: true
+  end
 end
