@@ -3,16 +3,23 @@ ja:
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
   helpers:
     submit:
       create: 作成する
       submit: 保存
       update: 更新
+  start_pages:
+    top:
+      title: トップページ
   incidents:
     index:
       title: 事件記録一覧
     new:
-      title: 事件新規作成
+      title: 事件記録新規作成
+    edit:
+      title: 事件整理
     incident:
       book: 書籍名
       name: 事件名
