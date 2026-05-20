@@ -1,0 +1,12 @@
+<% if @incident_time.errors.present? %>
+  <%= turbo_stream.replace "time-record-form" do %>
+    <%= render 'incident_times/form', incident: @incident, incident_time: @incident_time %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append "table-time-record" do %>
+    <%= render 'incident_times/incident_time', incident_time: @incident_time %>
+  <% end %>
+  <%= turbo_stream.replace "time-record-form" do %>
+    <%= render 'incident_times/form', incident: @incident, incident_time: IncidentTime.new %>
+  <% end %>
+<% end %>

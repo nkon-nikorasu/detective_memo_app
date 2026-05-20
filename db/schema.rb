@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_14_095536) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_20_074644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "incident_times", force: :cascade do |t|
+    t.integer "year"
+    t.integer "month"
+    t.integer "date"
+    t.integer "hour"
+    t.integer "minute"
+    t.integer "second"
+    t.string "body", null: false
+    t.integer "position"
+    t.bigint "incident_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_incident_times_on_incident_id"
+  end
 
   create_table "incidents", force: :cascade do |t|
     t.string "book", null: false
@@ -37,5 +52,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_14_095536) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "incident_times", "incidents"
   add_foreign_key "incidents", "users"
 end

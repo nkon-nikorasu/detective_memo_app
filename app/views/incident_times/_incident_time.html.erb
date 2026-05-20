@@ -1,0 +1,7 @@
+<tr id="time-record-<%= incident_time.id %>">
+  <td><%= "#{yeardeco(incident_time)}#{monthdeco(incident_time)}#{datedeco(incident_time)}#{hourdeco(incident_time)}#{minutedeco(incident_time)}#{seconddeco(incident_time)}" %></td>
+  <td><%= incident_time.body %> </td>
+  <td>並べ替えボタン</td>
+  <td><%= link_to "更新", "/" %></td>
+  <td><%= link_to "削除", "/" %></td>
+</tr>
