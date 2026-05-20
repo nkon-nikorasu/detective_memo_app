@@ -20,6 +20,8 @@ class IncidentsController < ApplicationController
   end
 
   def edit
+    @incident_time = IncidentTime.build
+    @incident_times = @incident.incident_times.order(created_at: :asc)
   end
 
   def update
