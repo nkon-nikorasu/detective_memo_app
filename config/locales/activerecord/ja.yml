@@ -14,9 +14,10 @@ ja:
         month: 月
         date: 日
         hour: 時
-        minuts: 分
+        minute: 分
         second: 秒
         body: 行動・移動
+        position: 並べ替え
   enums:
     incident:
       tag:
