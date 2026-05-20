@@ -1,4 +1,6 @@
 class IncidentTimesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_incident_time, only: [:edit, :update]
   def create
     puts "ここまで通っている"
     @incident = Incident.find(params[:incident_id])
@@ -9,9 +11,26 @@ class IncidentTimesController < ApplicationController
     puts "ここまで通ってます"
   end
 
+  def edit
+  end
+
+  def update
+    if @incident_time.update(incident_time_params)
+      redirect_to edit_incident_path(@incident_time.incident), notice: t('defaults.flash_message.updated', item: IncidentTime.model_name.human)
+    else
+      flash.now[:alert] = t('defaults.flash_message.not_updated', item: IncidentTime.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def incident_time_params
     params.require(:incident_time).permit(:year, :month, :date, :hour, :minute, :second, :body)
+  end
+
+  def set_incident_time
+    @incident = current_user.incidents.find(params[:incident_id])
+    @incident_time = @incident.incident_times.find(params[:id])
   end
 end
