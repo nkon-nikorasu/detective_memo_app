@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_17_033027) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_20_074644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_17_033027) do
     t.integer "month"
     t.integer "date"
     t.integer "hour"
-    t.integer "minuts"
+    t.integer "minute"
     t.integer "second"
     t.string "body", null: false
     t.integer "position"
