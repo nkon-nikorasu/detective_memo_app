@@ -22,7 +22,7 @@ module IncidentTimesHelper
   end
   def hourdeco(time)
     return "" if time.hour.nil?
-    if time.minute.nil? && time.second.nil?
+    if time.minute.nil? || time.second.nil?
       "#{time.hour}時頃"
     else
       "#{time.hour}時"
