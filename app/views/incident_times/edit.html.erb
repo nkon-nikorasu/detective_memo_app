@@ -1,0 +1,7 @@
+<% content_for(:title, t('.title')) %>
+<div class="border-b-2 text-center bg-lime-100 mx-2">
+  <h2 class="text-5xl"><%= t('.title') %></h2>
+</div>
+<div class="mb-2">
+  <%= render "form", incident: @incident, incident_time: @incident_time %>
+</div>

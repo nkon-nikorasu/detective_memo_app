@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "start_pages#top"
   resources :incidents do
-    resources :incident_times, only: %i[ create edit update destroy ], shallow: true
+    resources :incident_times, only: %i[ create edit update destroy ]
   end
 end
