@@ -16,7 +16,8 @@ class IncidentTimesController < ApplicationController
 
   def update
     if @incident_time.update(incident_time_params)
-      redirect_to edit_incident_path(@incident_time.incident), notice: t('defaults.flash_message.updated', item: IncidentTime.model_name.human)
+      redirect_to edit_incident_path(@incident_time.incident, anchor: "time-record-#{@incident_time.id}" ),
+      notice: t('defaults.flash_message.updated', item: IncidentTime.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: IncidentTime.model_name.human)
       render :edit, status: :unprocessable_entity
