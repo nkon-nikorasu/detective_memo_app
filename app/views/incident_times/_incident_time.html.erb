@@ -1,7 +1,10 @@
 <tr id="time-record-<%= incident_time.id %>">
   <td class="text-center"><%= "#{yeardeco(incident_time)}#{monthdeco(incident_time)}#{datedeco(incident_time)}#{hourdeco(incident_time)}#{minutedeco(incident_time)}#{seconddeco(incident_time)}" %></td>
   <td class="text-center"><%= incident_time.body %> </td>
-  <td class="text-center">並べ替えボタン</td>
+  <td class="text-center">
+    <%= link_to "↑", move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
+    <%= link_to "↓", move_lower_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
+  </td>
   <td class="bg-green-200"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
   <td class="bg-red-200"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
 </tr>
