@@ -1,6 +1,6 @@
 class IncidentTimesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_incident_time, only: [:edit, :update]
+  before_action :set_incident_time, only: [:edit, :update, :destroy]
   def create
     puts "ここまで通っている"
     @incident = Incident.find(params[:incident_id])
@@ -22,6 +22,10 @@ class IncidentTimesController < ApplicationController
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: IncidentTime.model_name.human)
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @incident_time.destroy!
   end
 
   private
