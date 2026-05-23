@@ -21,7 +21,7 @@ class IncidentsController < ApplicationController
 
   def edit
     @incident_time = IncidentTime.build
-    @incident_times = @incident.incident_times.order(created_at: :asc)
+    @incident_times = @incident.incident_times.order(:position)
   end
 
   def update
