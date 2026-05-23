@@ -3,5 +3,5 @@
   <td class="text-center"><%= incident_time.body %> </td>
   <td class="text-center">並べ替えボタン</td>
   <td class="bg-green-200"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
-  <td class="text-center"><%= link_to "削除", "/" %></td>
+  <td class="bg-red-200"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
 </tr>
