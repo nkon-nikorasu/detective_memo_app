@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "start_pages#top"
   resources :incidents do
-    resources :incident_times, only: %i[ create edit update destroy ]
+    resources :incident_times, only: %i[ create edit update destroy ] do
+      member do
+        get :move_higher
+        get :move_lower
+      end
+    end
   end
 end
