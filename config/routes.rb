@@ -20,5 +20,6 @@ Rails.application.routes.draw do
         get :move_lower
       end
     end
+    resources :characters, only: %I[ create edit update destroy]
   end
 end
