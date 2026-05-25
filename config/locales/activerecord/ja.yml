@@ -3,6 +3,7 @@ ja:
     models:
       incident: 事件記録
       incident_time: タイムレコード
+      character: 登場人物記録
     attributes:
       incident:
         book: 書籍名
@@ -18,6 +19,12 @@ ja:
         second: 秒
         body: 行動・移動
         position: 並べ替え
+      character:
+        name: 人物名
+        gender: 性別
+        age: 年齢
+        role: 職業
+        body: 人物像
   enums:
     incident:
       tag:
@@ -28,3 +35,7 @@ ja:
         suicide: 自殺
         terrorism: テロ
         others: その他
+    character:
+      gender:
+        man: 男
+        woman: 女
