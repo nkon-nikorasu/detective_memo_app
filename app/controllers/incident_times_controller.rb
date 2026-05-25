@@ -30,12 +30,12 @@ class IncidentTimesController < ApplicationController
 
   def move_higher
     @incident_time.move_higher
-    redirect_to edit_incident_path(@incident, anchor: "time-record-#{@incident_time.id}" )
+    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
   end
 
   def move_lower
     @incident_time.move_lower
-    redirect_to edit_incident_path(@incident, anchor: "time-record-#{@incident_time.id}" )
+    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
   end
 
   private
