@@ -32,6 +32,9 @@ ja:
   incident_times:
     edit:
       title: 時系列表編集
+  characters:
+    edit:
+      title: 登場人物編集
   header:
     login: ログイン
     logout: ログアウト
