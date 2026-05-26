@@ -20,8 +20,10 @@ class IncidentsController < ApplicationController
   end
 
   def edit
-    @incident_time = IncidentTime.build
+    @incident_time = IncidentTime.new
     @incident_times = @incident.incident_times.order(:position)
+    @character = Character.new
+    @characters = @incident.characters.order(created_at: :asc)
   end
 
   def update

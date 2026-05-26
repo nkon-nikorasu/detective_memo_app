@@ -3,7 +3,7 @@ class IncidentTimesController < ApplicationController
   before_action :set_incident_time, only: [:edit, :update, :destroy, :move_higher, :move_lower]
   def create
     puts "ここまで通っている"
-    @incident = Incident.find(params[:incident_id])
+    @incident = current_user.incidents.find(params[:incident_id])
     @incident_time = @incident.incident_times.build(incident_time_params)
     @incident_time.save
     p "インシデントタイムです>#{@incident_time.class}"
@@ -30,12 +30,12 @@ class IncidentTimesController < ApplicationController
 
   def move_higher
     @incident_time.move_higher
-    redirect_to edit_incident_path(@incident, anchor: "time-record-#{@incident_time.id}" )
+    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
   end
 
   def move_lower
     @incident_time.move_lower
-    redirect_to edit_incident_path(@incident, anchor: "time-record-#{@incident_time.id}" )
+    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
   end
 
   private

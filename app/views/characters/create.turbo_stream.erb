@@ -1,0 +1,12 @@
+<% if @character.errors.present? %>
+  <%= turbo_stream.replace "character-form" do %>
+    <%= render 'characters/form', incident: @incident, character: @character %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append "characters-table" do %>
+    <%= render 'characters/character', character: @character %>
+  <% end %>
+  <%= turbo_stream.replace "character-form" do %>
+    <%= render 'characters/form', incident: @incident, character: Character.new %>
+  <% end %>
+<% end %>
