@@ -18,7 +18,7 @@
     </div>
     <div class="flex-1 flex flex-col items-center justify-around text-center">
       <%= link_to "編集", edit_incident_character_path(character.incident, character), class: "flex flex-1 bg-green-200 h-full w-full mx-2 items-center justify-center border-b-1" %>
-      <%= link_to "削除", "/", class: "flex flex-1 bg-red-200 h-full w-full mx-2 items-center justify-center" %>
+      <%= link_to "削除", incident_character_path(character.incident, character), data: {turbo_method: :delete}, class: "flex flex-1 bg-red-200 h-full w-full mx-2 items-center justify-center" %>
     </div>
   </div>
   <div class="flex items-center justify-left w-auto h-auto">

@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_character, only: [:edit, :update]
+  before_action :set_character, only: [:edit, :update, :destroy]
   def create
     @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.build(character_params)
@@ -18,6 +18,10 @@ class CharactersController < ApplicationController
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Character.model_name.human)
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @character.destroy!
   end
 
   private
