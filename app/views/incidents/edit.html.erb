@@ -24,8 +24,8 @@
     <%= f.submit class: "border-2 rounded-xl h-10 w-20" %>
   <% end %>
 </div>
-<div class="flex flex-col mb-3">
-  <div class="border-b-2 flex justify-center p-2 mx-2 bg-lime-100">
+<div class="flex flex-col mb-3 mx-2">
+  <div class="border-b-2 flex justify-center p-2 bg-lime-100">
     <p class="text-5xl"><%= t('.incident_time') %></p>
   </div>
   <div class="mb-2">
@@ -42,9 +42,7 @@
       </tr>
     </thead>
     <tbody id="table-time-record">
-      <% if @incident_times.present? %>
-        <%= render @incident_times %>
-      <% end %>
+      <%= render partial: "incident_times/incident_time", collection: @incident_times, locals: { page_type: "edit" } %>
     </tbody>
   </table>
 </div>
@@ -57,9 +55,12 @@
   </div>
   <div id="characters-table" class="flex flex-col text-center">
     <% if @characters.present? %>
-      <%= render @characters %>
+      <%= render partial: "characters/character", collection: @characters, locals: { page_type: "edit" } %>
     <% else %>
       人物記録はありません
     <% end %>
+  </div>
+  <div class="flex justify-center">
+    <%= link_to "事件詳細画面へ", incident_path(@incident), class: "flex border-2 rounded-xl h-10 w-auto items-center justify-center px-2" %>
   </div>
 </div>
