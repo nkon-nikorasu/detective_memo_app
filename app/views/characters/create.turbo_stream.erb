@@ -4,7 +4,7 @@
   <% end %>
 <% else %>
   <%= turbo_stream.append "characters-table" do %>
-    <%= render 'characters/character', character: @character %>
+    <%= render partial: 'characters/character', locals: { character: @character, page_type: "edit" } %>
   <% end %>
   <%= turbo_stream.replace "character-form" do %>
     <%= render 'characters/form', incident: @incident, character: Character.new %>
