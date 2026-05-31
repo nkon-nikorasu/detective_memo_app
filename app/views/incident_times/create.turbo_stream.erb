@@ -4,7 +4,7 @@
   <% end %>
 <% else %>
   <%= turbo_stream.append "table-time-record" do %>
-    <%= render 'incident_times/incident_time', incident_time: @incident_time %>
+    <%= render partial: 'incident_times/incident_time', locals: { incident_time: @incident_time, page_type: "edit" } %>
   <% end %>
   <%= turbo_stream.replace "time-record-form" do %>
     <%= render 'incident_times/form', incident: @incident, incident_time: IncidentTime.new %>
