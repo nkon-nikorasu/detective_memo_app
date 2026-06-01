@@ -2,26 +2,26 @@
   <h2 class="text-5xl"><%= t('.title') %></h2>
 </div>
 <%= form_with model: [@incident, @character], id: "character-form", data: { turbo: false }, class: "flex flex-col items-center" do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "名前を入力してください＊任意" %>
-    </div>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :gender %>
-      <%= f.select :gender, Character.genders.keys.map { |k| [t("enums.character.gender.#{k}"), k] }, {include_blank: "指定なし"},class: "border-2 w-100 h-10 px-2 rounded-xl" %>
-    </div>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :age %>
-      <%= f.number_field :age, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "年齢を入力してください＊任意" %>
-    </div>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :role %>
-      <%= f.text_field :role, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "職業を入力してください＊任意" %>
-    </div>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :body %>
-      <%= f.text_area :body, class: "border-2 p-2 rounded-xl", placeholder: "人物像を記述してください＊任意", size: "50x10" %>
-    </div>
-    <%= f.submit class: "border-2 rounded-xl h-10 w-20" %>
-  <% end %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "名前を入力してください＊任意" %>
+  </div>
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :gender %>
+    <%= f.select :gender, Character.genders.keys.map { |k| [t("enums.character.gender.#{k}"), k] }, {include_blank: "指定なし"},class: "border-2 w-100 h-10 px-2 rounded-xl" %>
+  </div>
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :age %>
+    <%= f.number_field :age, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "年齢を入力してください＊任意" %>
+  </div>
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :role %>
+    <%= f.text_field :role, class: "border-2 w-100 h-10 px-2 rounded-xl", placeholder: "職業を入力してください＊任意" %>
+  </div>
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "border-2 p-2 rounded-xl", placeholder: "人物像を記述してください＊任意", size: "50x10" %>
+  </div>
+  <%= f.submit class: "border-2 rounded-xl h-10 w-20" %>
+<% end %>
