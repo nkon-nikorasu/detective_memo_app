@@ -35,6 +35,8 @@ ja:
       character: 登場人物
       date: 日時
       move: 行動・移動
+      memo: 推理メモ
+      memos: 推理メモ一覧
     incident:
       book: 書籍名
       name: 事件名
