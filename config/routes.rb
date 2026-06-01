@@ -21,5 +21,6 @@ Rails.application.routes.draw do
       end
     end
     resources :characters, only: %I[ create edit update destroy]
+    resources :memos, only: %I[ create edit update destroy]
   end
 end
