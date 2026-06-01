@@ -4,6 +4,7 @@ ja:
       incident: 事件記録
       incident_time: タイムレコード
       character: 登場人物記録
+      memo: メモ
     attributes:
       incident:
         book: 書籍名
@@ -25,6 +26,8 @@ ja:
         age: 年齢
         role: 職業
         body: 人物像
+      memo:
+        tag: タグ
   enums:
     incident:
       tag:
@@ -40,3 +43,7 @@ ja:
         man: 男
         woman: 女
         anonymous: 不明
+    memo:
+      tag:
+        deduction: 推理
+        clue: 伏線
