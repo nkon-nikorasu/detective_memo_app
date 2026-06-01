@@ -1,0 +1,12 @@
+<% if @memo.errors.present? %>
+  <%= turbo_stream.replace "memo-form" do %>
+    <%= render 'memos/form', incident: @incident, memo: @memo %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "memo-table" do %>
+    <%= render 'memos/memo', memo: @memo %>
+  <% end %>
+  <%= turbo_stream.replace "memo-form" do %>
+    <%= render 'memos/form', incident: @incident, memo: Memo.new %>
+  <% end %>
+<% end %>
