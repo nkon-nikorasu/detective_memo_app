@@ -34,7 +34,7 @@
   <table>
     <thead>
       <tr>
-        <th>日時</th>
+        <th><%= t('.date') %></th>
         <th><%= IncidentTime.human_attribute_name(:body) %></th>
         <th><%= IncidentTime.human_attribute_name(:position) %></th>
         <th>更新</th>
@@ -54,13 +54,9 @@
     <%= render "characters/form", incident: @incident, character: @character %>
   </div>
   <div id="characters-table" class="flex flex-col text-center">
-    <% if @characters.present? %>
-      <%= render partial: "characters/character", collection: @characters, locals: { page_type: "edit" } %>
-    <% else %>
-      人物記録はありません
-    <% end %>
+    <%= render partial: "characters/character", collection: @characters, locals: { page_type: "edit" } %>
   </div>
   <div class="flex justify-center">
-    <%= link_to "事件詳細画面へ", incident_path(@incident), class: "flex border-2 rounded-xl h-10 w-auto items-center justify-center px-2" %>
+    <%= link_to t('helpers.links.show'), incident_path(@incident), class: "flex border-2 rounded-xl h-10 w-auto items-center justify-center px-2" %>
   </div>
 </div>
