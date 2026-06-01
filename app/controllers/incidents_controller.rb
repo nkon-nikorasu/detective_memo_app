@@ -38,6 +38,8 @@ class IncidentsController < ApplicationController
   def show
     @incident_times = @incident.incident_times.order(:position)
     @characters = @incident.characters
+    @memo = Memo.new
+    @memos = @incident.memos.order(created_at: :desc)
   end
 
   def destroy
