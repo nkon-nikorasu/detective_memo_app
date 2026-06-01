@@ -1,37 +1,45 @@
-<div class="border-b-2 text-center mx-2 bg-lime-100">
-  <h2 class="text-5xl"><%= t('.title') %></h2>
-</div>
-<div class="flex flex-col gap-3 pt-2 m-2">
-  <p class="text-3xl"><%= Incident.human_attribute_name(:book) %>:<%= @incident.book%></p>
-  <p class="text-2xl"><%= Incident.human_attribute_name(:name) %>:<%= @incident.name%></p>
-  <p class="text-2xl"><%= Incident.human_attribute_name(:tag) %>:<%= @incident.tag_i18n%></p>
-  <p><%= Incident.human_attribute_name(:body) %>:</p>
-  <p class="break-words"><%= @incident.body %></p>
-</div>
-<div class="border-b-2 text-center m-2 bg-lime-100">
-  <h2 class="text-5xl"><%= t('.incident_time') %></h2>
-</div>
 <div class="m-2">
-  <table class="w-full">
-    <thead>
-      <tr>
-        <th>日時</th>
-        <th><%= IncidentTime.human_attribute_name(:body) %></th>
-      </tr>
-    </thead>
-    <tbody id="table-time-record">
-      <%= render @incident_times %>
-    </tbody>
-  </table>
-</div>
-<div class="border-b-2 text-center m-2 bg-lime-100">
-  <h2 class="text-5xl"><%= t('.character') %></h2>
-</div>
-<% if @characters.present? %>
+  <div class="border-b-2 text-center bg-lime-100">
+    <h2 class="text-5xl"><%= t('.title') %></h2>
+  </div>
+  <div class="flex flex-col gap-3 pt-2">
+    <p class="text-3xl"><%= Incident.human_attribute_name(:book) %>:<%= @incident.book%></p>
+    <p class="text-2xl"><%= Incident.human_attribute_name(:name) %>:<%= @incident.name%></p>
+    <p class="text-2xl"><%= Incident.human_attribute_name(:tag) %>:<%= @incident.tag_i18n%></p>
+    <p><%= Incident.human_attribute_name(:body) %>:</p>
+    <p class="break-words"><%= @incident.body %></p>
+  </div>
+  <div class="border-y-2 text-center bg-lime-100">
+    <h2 class="text-5xl"><%= t('.incident_time') %></h2>
+  </div>
+  <div>
+    <table class="w-full my-2">
+      <thead>
+        <tr>
+          <th><%= t('.date') %></th>
+          <th><%= IncidentTime.human_attribute_name(:body) %></th>
+        </tr>
+      </thead>
+      <tbody id="table-time-record">
+        <%= render @incident_times %>
+      </tbody>
+    </table>
+  </div>
+  <div class="border-y-2 text-center bg-lime-100">
+    <h2 class="text-5xl"><%= t('.character') %></h2>
+  </div>
   <%= render @characters %>
-<% else %>
-  人物記録はありません
-<% end %>
-<div class="flex justify-center">
-  <%= link_to "事件整理画面へ", edit_incident_path(@incident), class: "flex border-2 rounded-xl h-10 w-auto items-center justify-center px-2" %>
+  <div class="border-y-2 flex justify-center p-2 bg-lime-100">
+    <p class="text-5xl"><%= t('.memo') %></p>
+  </div>
+  <%= render "memos/form", incident: @incident, memo: @memo %>
+  <div class="flex flex-col items-center w-full">
+    <p class="border-b-2 w-full text-center"><%= t('.memos') %></p>
+    <div id="memo-table" class="w-full">
+      <%= render @memos %>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <%= link_to t('helpers.links.edit'), edit_incident_path(@incident), class: "flex border-2 rounded-xl h-10 w-auto items-center justify-center px-2" %>
+  </div>
 </div>
