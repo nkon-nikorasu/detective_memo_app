@@ -12,6 +12,9 @@ ja:
       create: 登録
       submit: 保存
       update: 更新
+    links:
+      edit: 事件整理画面へ
+      show: 事件詳細画面へ
   start_pages:
     top:
       title: トップページ
@@ -24,10 +27,14 @@ ja:
       title: 事件整理
       incident_time: 時系列表登録
       character: 登場人物登録
+      date: 日時
+      move: 行動・移動
     show:
       title: 事件詳細
       incident_time: 時系列
       character: 登場人物
+      date: 日時
+      move: 行動・移動
     incident:
       book: 書籍名
       name: 事件名
