@@ -8,4 +8,5 @@ class Incident < ApplicationRecord
   belongs_to :user
   has_many :incident_times, dependent: :destroy
   has_many :characters, dependent: :destroy
+  has_many :memos, dependent: :destroy
 end
