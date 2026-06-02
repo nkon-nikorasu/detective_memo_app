@@ -2,7 +2,7 @@
   <div class="flex justify-between items-center">
     <p class="text-3xl"><%= memo.tag_i18n %></p>
     <div class="flex gap-2">
-      <%= link_to "編集", "/", class: "bg-green-200 rounded-xl items-center justify-center p-2" %>
+      <%= link_to "編集", edit_incident_memo_path(memo.incident, memo), class: "bg-green-200 rounded-xl items-center justify-center p-2" %>
       <%= link_to "削除", "/", data: {turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm')}, class: "bg-red-200 rounded-xl items-center justify-center p-2" %>
     </div>
   </div>
