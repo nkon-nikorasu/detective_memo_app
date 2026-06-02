@@ -48,6 +48,9 @@ ja:
   characters:
     edit:
       title: 登場人物編集
+  memos:
+    edit:
+      title: メモ編集
   header:
     login: ログイン
     logout: ログアウト
