@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_memo, only: [:edit, :update]
+  before_action :set_memo, only: [:edit, :update, :destroy]
 
   def create
     @incident = current_user.incidents.find(params[:incident_id])
@@ -19,6 +19,10 @@ class MemosController < ApplicationController
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Memo.model_name.human)
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @memo.destroy!
   end
 
   private
