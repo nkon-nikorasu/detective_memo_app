@@ -29,6 +29,12 @@ ja:
       memo:
         tag: タグ
         body: メモ
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "の形式が間違っています"
   enums:
     incident:
       tag:

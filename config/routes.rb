@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "start_pages#top"
+  get 'privacy', to: 'start_pages#privacy'
   resources :incidents do
     resources :incident_times, only: %i[ create edit update destroy ] do
       member do
