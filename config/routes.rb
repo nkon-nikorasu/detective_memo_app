@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "start_pages#top"
   get 'privacy', to: 'start_pages#privacy'
+  get 'terms', to: 'start_pages#terms'
   resources :incidents do
     resources :incident_times, only: %i[ create edit update destroy ] do
       member do
