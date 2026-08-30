@@ -1,6 +1,12 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_memo, only: [:edit, :update, :destroy]
+  before_action :set_memo, only: [ :edit, :update, :destroy]
+
+  def index
+    @incident = current_user.incidents.find(params[:incident_id])
+    @memos = @incident.memos
+    @memo = Memo.new
+  end
 
   def create
     @incident = current_user.incidents.find(params[:incident_id])
