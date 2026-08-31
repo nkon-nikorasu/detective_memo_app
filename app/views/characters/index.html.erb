@@ -1,0 +1,11 @@
+<div class="flex flex-col w-full my-2">
+  <div class="border-b-2 border-t-2 flex justify-center p-2 bg-lime-100">
+    <p class="text-5xl"><%= t('.title') %></p>
+  </div>
+  <div>
+    <%= render "characters/form", incident: @incident, character: @character %>
+  </div>
+  <div id="characters-table" class="flex flex-col text-center w-full">
+    <%= render partial: "characters/character", collection: @characters, locals: { page_type: "edit" } %>
+  </div>
+</div>
