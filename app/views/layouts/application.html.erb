@@ -21,9 +21,14 @@
 
   <body class="flex flex-col min-h-screen text-slate-900 font-serif">
     <%= render 'shared/header' %>
-    <div class="flex-grow">
-      <%= render 'shared/flash' %>
-      <%= yield %>
+    <%= render 'shared/flash' %>
+    <div class="flex flex-grow">
+      <% if show_incident_sidebar? %>
+        <%= render "shared/sidebar" %>
+      <% end %>
+      <main class="flex-1 min-w-0">
+        <%= yield %>
+      </main>
     </div>
     <%= render 'shared/footer' %>
   </body>   
