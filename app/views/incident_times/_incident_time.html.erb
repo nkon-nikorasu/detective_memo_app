@@ -7,7 +7,7 @@
       <%= link_to "↑", move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
       <%= link_to "↓", move_lower_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
     </td>
-    <td class="bg-green-200"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
-    <td class="bg-red-200"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
+    <td class="bg-green-200 hover:bg-green-500 active:text-white"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
+    <td class="bg-red-200 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
   <% end %>
 </tr>
