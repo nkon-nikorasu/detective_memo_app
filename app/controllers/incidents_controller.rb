@@ -20,15 +20,11 @@ class IncidentsController < ApplicationController
   end
 
   def edit
-    @incident_time = IncidentTime.new
-    @incident_times = @incident.incident_times.order(:position)
-    @character = Character.new
-    @characters = @incident.characters.order(created_at: :asc)
   end
 
   def update
     if @incident.update(incident_params)
-      redirect_to edit_incident_path(@incident), notice: t('defaults.flash_message.updated', item: Incident.model_name.human)
+      redirect_to incident_path(@incident), notice: t('defaults.flash_message.updated', item: Incident.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Incident.model_name.human)
       render :edit, status: :unprocessable_entity
