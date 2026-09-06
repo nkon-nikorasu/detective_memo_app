@@ -1,6 +1,13 @@
 class IncidentTimesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_incident_time, only: [:edit, :update, :destroy, :move_higher, :move_lower]
+
+  def index
+    @incident = current_user.incidents.find(params[:incident_id])
+    @incident_times = @incident.incident_times.order(:position)
+    @incident_time = IncidentTime.new
+  end
+
   def create
     puts "ここまで通っている"
     @incident = current_user.incidents.find(params[:incident_id])
@@ -16,7 +23,7 @@ class IncidentTimesController < ApplicationController
 
   def update
     if @incident_time.update(incident_time_params)
-      redirect_to edit_incident_path(@incident, anchor: "time-record-#{@incident_time.id}" ),
+      redirect_to incident_incident_times_path(@incident, anchor: "time-record-#{@incident_time.id}" ),
       notice: t('defaults.flash_message.updated', item: IncidentTime.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: IncidentTime.model_name.human)
@@ -30,12 +37,12 @@ class IncidentTimesController < ApplicationController
 
   def move_higher
     @incident_time.move_higher
-    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
+    redirect_to incident_incident_times_path(@incident, anchor: "table-time-record" )
   end
 
   def move_lower
     @incident_time.move_lower
-    redirect_to edit_incident_path(@incident, anchor: "table-time-record" )
+    redirect_to incident_incident_times_path(@incident, anchor: "table-time-record" )
   end
 
   private
