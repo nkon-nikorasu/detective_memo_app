@@ -1,13 +1,14 @@
-<% page_type ||= "show" %>
 <tr id="time-record-<%= incident_time.id %>">
   <td class="text-center"><%= "#{yeardeco(incident_time)}#{monthdeco(incident_time)}#{datedeco(incident_time)}#{hourdeco(incident_time)}#{minutedeco(incident_time)}#{seconddeco(incident_time)}" %></td>
   <td class="text-center"><%= incident_time.body %> </td>
-  <% if page_type == "edit" %>
-    <td class="text-center">
-      <%= link_to "↑", move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
-      <%= link_to "↓", move_lower_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full" %>
-    </td>
-    <td class="bg-green-200 hover:bg-green-500 active:text-white"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
-    <td class="bg-red-200 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
-  <% end %>
+  <td class="text-center">
+    <%= link_to move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full hover:bg-gray-100 active:bg-gray-300" do %>
+      <%= image_tag "up.png", class: "w-6 h-6 object-contain" %>
+    <% end %>
+    <%= link_to move_lower_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full hover:bg-gray-100 active:bg-gray-300" do %>
+      <%= image_tag "down.png", class: "w-6 h-6 object-contain" %>
+    <% end %>
+  </td>
+  <td class="bg-green-300 hover:bg-green-500 active:text-white"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), class: "flex justify-center w-full" %></td>
+  <td class="bg-red-300 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
 </tr>
