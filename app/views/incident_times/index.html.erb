@@ -10,7 +10,10 @@
       <%= render "incident_times/form", incident: @incident, incident_time: @incident_time %>
     </div>
   </div>
-  <p class="border-b-2 w-full mb-2 text-center"><%= t('.index') %></p>
+  <p class="border-b-2 w-full text-center"><%= t('.index') %></p>
+  <div id="flash">
+    <%= render 'shared/flash' %>
+  </div>
   <table>
     <thead>
       <tr>
