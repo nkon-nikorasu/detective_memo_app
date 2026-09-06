@@ -19,7 +19,7 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      redirect_to incident_path(@incident, anchor: "memo-record-#{ @memo.id }" ),
+      redirect_to incident_memos_path(@incident, anchor: "memo-record-#{ @memo.id }" ),
       notice: t('defaults.flash_message.updated', item: Memo.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Memo.model_name.human)
