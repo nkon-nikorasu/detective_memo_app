@@ -1,4 +1,3 @@
-<% page_type ||= "show" %>
 <div id="character-id-<%= character.id %>" class="flex flex-col border h-auto mx-2 my-2">
   <div class="flex border-b-1 ">
     <div class="flex-1 flex flex-col border-r-1 ">
@@ -17,12 +16,10 @@
         <p><%= Character.human_attribute_name(:role)%>: <%=character.role %></p>
       </div>
     </div>
-    <% if page_type == "edit" %>
-      <div class="flex-1 flex flex-col items-center justify-around text-center border-l-1">
-        <%= link_to "編集", edit_incident_character_path(character.incident, character), class: "flex flex-1 bg-green-200 h-full w-full mx-2 items-center justify-center border-b-1" %>
-        <%= link_to "削除", incident_character_path(character.incident, character), data: {turbo_method: :delete}, class: "flex flex-1 bg-red-200 h-full w-full mx-2 items-center justify-center" %>
-      </div>
-    <% end %>
+    <div class="flex-1 flex flex-col items-center justify-around text-center border-l-1">
+      <%= link_to "編集", edit_incident_character_path(character.incident, character), class: "flex flex-1 bg-green-300 h-full w-full mx-2 items-center justify-center border-b-1 hover:bg-green-500 active:text-white" %>
+      <%= link_to "削除", incident_character_path(character.incident, character), data: {turbo_method: :delete}, class: "flex flex-1 bg-red-300 h-full w-full mx-2 items-center justify-center hover:bg-red-500 active:text-white" %>
+    </div>
   </div>
   <div class="flex items-center justify-left w-full h-auto p-2">
     <p class="break-words w-full"><%= Character.human_attribute_name(:body)%>: <%=character.body %></p>
