@@ -12,6 +12,9 @@
   </div>
   <p class="border-b-2 w-full mb-2 text-center"><%= t('.index') %></p>
   <div id="characters-table" class="flex flex-col text-center w-full">
+    <div id="flash">
+      <%= render 'shared/flash' %>
+    </div>
     <%= render @characters %>
   </div>
 </div>

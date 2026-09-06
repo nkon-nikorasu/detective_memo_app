@@ -1,1 +1,5 @@
 <%= turbo_stream.remove "time-record-#{@incident_time.id}" %>
+
+<%= turbo_stream.update "flash" do %>
+  <%= render "shared/flash" %>
+<% end %>

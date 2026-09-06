@@ -12,6 +12,9 @@
   </div>
   <div class="flex flex-col items-center w-full border-b-2">
     <p class="border-b-2 w-full text-center"><%= t('.index') %></p>
+    <div id="flash">
+      <%= render 'shared/flash' %>
+    </div>
     <div id="memo-table" class="w-full min-h-2">
       <%= render @memos %>
     </div>

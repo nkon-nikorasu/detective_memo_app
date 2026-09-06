@@ -1,1 +1,5 @@
 <%= turbo_stream.remove "memo-record-#{@memo.id}" %>
+
+<%= turbo_stream.update "flash" do %>
+  <%= render "shared/flash" %>
+<% end %>

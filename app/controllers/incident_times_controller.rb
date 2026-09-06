@@ -33,6 +33,7 @@ class IncidentTimesController < ApplicationController
 
   def destroy
     @incident_time.destroy!
+    flash.now[:notice] = t('defaults.flash_message.deleted', item: IncidentTime.model_name.human)
   end
 
   def move_higher

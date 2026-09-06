@@ -29,6 +29,7 @@ class MemosController < ApplicationController
 
   def destroy
     @memo.destroy!
+    flash.now[:notice] = t('defaults.flash_message.deleted', item: Memo.model_name.human)
   end
 
   private
