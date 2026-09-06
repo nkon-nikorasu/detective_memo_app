@@ -47,6 +47,7 @@ ja:
       title: 時系列表編集
     index:
       title: 時系列登録
+      date: 日時
       index: 時系列一覧
   characters:
     edit:
