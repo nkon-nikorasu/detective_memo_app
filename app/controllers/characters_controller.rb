@@ -29,6 +29,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy!
+    flash.now[:notice] = t('defaults.flash_message.deleted', item: Character.model_name.human)
   end
 
   private
