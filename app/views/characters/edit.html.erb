@@ -1,7 +1,7 @@
-<div class="border-b-2 text-center bg-lime-100 mx-2">
+<div class="border-b-2 text-center bg-lime-100 my-2 p-2">
   <h2 class="text-5xl"><%= t('.title') %></h2>
 </div>
-<%= form_with model: [@incident, @character], id: "character-form", data: { turbo: false }, class: "flex flex-col items-center" do |f| %>
+<%= form_with model: [@incident, @character], id: "character-form", class: "flex flex-col items-center" do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="flex flex-col justify-center items-center my-3">
     <%= f.label :name %>
@@ -23,5 +23,5 @@
     <%= f.label :body %>
     <%= f.text_area :body, class: "border-2 p-2 rounded-xl", placeholder: "人物像を記述してください＊任意", size: "50x10" %>
   </div>
-  <%= f.submit class: "border-2 rounded-xl h-10 w-20" %>
+  <%= f.submit class: "border-2 rounded-xl h-10 w-20 hover:bg-gray-500 active:bg-black active:text-white" %>
 <% end %>
