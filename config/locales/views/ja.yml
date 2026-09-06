@@ -45,12 +45,22 @@ ja:
   incident_times:
     edit:
       title: 時系列表編集
+    index:
+      title: 時系列登録
+      date: 日時
+      index: 時系列一覧
   characters:
     edit:
       title: 登場人物編集
+    index:
+      title: 登場人物登録
+      index: 登場人物一覧
   memos:
     edit:
       title: メモ編集
+    index:
+      title: 推理メモ
+      index: 推理メモ一覧
   header:
     login: ログイン
     logout: ログアウト

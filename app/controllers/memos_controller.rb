@@ -1,6 +1,12 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_memo, only: [:edit, :update, :destroy]
+  before_action :set_memo, only: [ :edit, :update, :destroy]
+
+  def index
+    @incident = current_user.incidents.find(params[:incident_id])
+    @memos = @incident.memos
+    @memo = Memo.new
+  end
 
   def create
     @incident = current_user.incidents.find(params[:incident_id])
@@ -13,7 +19,7 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      redirect_to incident_path(@incident, anchor: "memo-record-#{ @memo.id }" ),
+      redirect_to incident_memos_path(@incident, anchor: "memo-record-#{ @memo.id }" ),
       notice: t('defaults.flash_message.updated', item: Memo.model_name.human)
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: Memo.model_name.human)

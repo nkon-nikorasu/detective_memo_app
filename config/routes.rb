@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   get 'privacy', to: 'start_pages#privacy'
   get 'terms', to: 'start_pages#terms'
   resources :incidents do
-    resources :incident_times, only: %i[ create edit update destroy ] do
+    resources :incident_times, only: %i[ index create edit update destroy ] do
       member do
         get :move_higher
         get :move_lower
       end
     end
-    resources :characters, only: %I[ create edit update destroy]
-    resources :memos, only: %I[ create edit update destroy]
+    resources :characters, only: %I[ index create edit update destroy]
+    resources :memos, only: %I[ index create edit update destroy]
   end
 end

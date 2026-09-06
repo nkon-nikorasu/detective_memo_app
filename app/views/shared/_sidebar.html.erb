@@ -1,0 +1,9 @@
+<aside class="w-1/6 bg-gray-100 my-2 ">
+  <h2>事件メニュー</h2>
+  <ul class="space-y-2">
+    <li><%= link_to "事件詳細", incident_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white " %></li>
+    <li><%= link_to "人物登録", incident_characters_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
+    <li><%= link_to "時系列登録", incident_incident_times_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
+    <li><%= link_to "推理メモ", incident_memos_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
+  </ul>
+</aside>
