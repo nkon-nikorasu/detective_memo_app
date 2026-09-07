@@ -4,6 +4,11 @@
     <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="DetectiveMemo">
+    <meta property="og:description" content="ミステリー小説の情報を整理できる推理メモアプリ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= image_url("ogp.jpg") %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
