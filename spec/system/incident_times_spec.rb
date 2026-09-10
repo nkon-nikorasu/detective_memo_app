@@ -67,6 +67,4 @@ RSpec.describe "IncidentTimes", type: :system do
       end
     end
   end
-
-  #pending "add some scenarios (or delete) #{__FILE__}"
 end

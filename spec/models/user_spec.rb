@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
   describe 'バリデーションチェック' do
     it "正しい情報ならユーザーを作成できる" do
       user = build(:user)

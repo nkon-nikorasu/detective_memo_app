@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Character, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
   describe "バリデーション" do
     it "すべての値が正しければ有効" do
       character = build(:character)
