@@ -49,7 +49,6 @@ RSpec.configure do |config|
 
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-
   end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
