@@ -34,6 +34,8 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -41,6 +43,14 @@ RSpec.configure do |config|
   ]
   config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers, type: :system
+
+  config.before(:each, type: :system) do
+    driven_by :remote_chrome
+
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+
+  end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
