@@ -45,10 +45,14 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers, type: :system
 
   config.before(:each, type: :system) do
-    driven_by :remote_chrome
+    if ENV["SELENIUM_DRIVER_URL"].present?
+      driven_by :remote_chrome
 
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+      Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+      Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    else
+      driven_by :selenium_chrome_headless
+    end
   end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
