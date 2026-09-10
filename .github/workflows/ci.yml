@@ -72,9 +72,6 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
-      - name: Setup ChromeDriver
-        uses: browser-actions/setup-chromedriver@v1
-
       - name: Prepare database
         env:
           RAILS_ENV: test
