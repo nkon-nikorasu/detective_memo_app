@@ -71,6 +71,9 @@ jobs:
       
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
+
+      - name: Install JavaScript dependencies
+        run: yarn install --frozen-lockfile
       
       - name: Build JavaScript
         run: yarn build
