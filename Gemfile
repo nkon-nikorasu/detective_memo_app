@@ -35,17 +35,17 @@ gem "bootsnap", require: false
 
 gem "devise"
 
-gem 'devise-i18n'
+gem "devise-i18n"
 
-gem 'devise-i18n-views'
+gem "devise-i18n-views"
 
-gem 'rails-i18n', '~> 7.0.0'
+gem "rails-i18n", "~> 7.0.0"
 
-gem 'enum_help'
+gem "enum_help"
 
-gem 'kaminari'
+gem "kaminari"
 
-gem 'acts_as_list'
+gem "acts_as_list"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -60,11 +60,11 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'pry-byebug'
+  gem "pry-byebug"
 
-  gem 'rspec-rails'
-  
-  gem 'factory_bot_rails'
+  gem "rspec-rails"
+
+  gem "factory_bot_rails"
 end
 
 group :development do
