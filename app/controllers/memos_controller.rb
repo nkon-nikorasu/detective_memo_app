@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_memo, only: [ :edit, :update, :destroy]
+  before_action :set_memo, only: [ :edit, :update, :destroy ]
 
   def index
     @incident = current_user.incidents.find(params[:incident_id])
@@ -19,17 +19,17 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      redirect_to incident_memos_path(@incident, anchor: "memo-record-#{ @memo.id }" ),
-      notice: t('defaults.flash_message.updated', item: Memo.model_name.human)
+      redirect_to incident_memos_path(@incident, anchor: "memo-record-#{ @memo.id }"),
+      notice: t("defaults.flash_message.updated", item: Memo.model_name.human)
     else
-      flash.now[:alert] = t('defaults.flash_message.not_updated', item: Memo.model_name.human)
+      flash.now[:alert] = t("defaults.flash_message.not_updated", item: Memo.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @memo.destroy!
-    flash.now[:notice] = t('defaults.flash_message.deleted', item: Memo.model_name.human)
+    flash.now[:notice] = t("defaults.flash_message.deleted", item: Memo.model_name.human)
   end
 
   private
