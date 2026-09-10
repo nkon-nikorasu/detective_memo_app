@@ -71,6 +71,12 @@ jobs:
       
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
+      
+      - name: Build JavaScript
+        run: yarn build
+
+      - name: Build CSS
+        run: yarn build:css
 
       - name: Prepare database
         env:
