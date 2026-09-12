@@ -22,8 +22,16 @@
     <%= favicon_link_tag "favicon/favicon.ico" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <!-- Google tag (gtag.js) -->
   </head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CVBSMWW4SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-CVBSMWW4SG');
+  </script>
   <body class="flex flex-col min-h-screen text-slate-900 font-serif">
     <%= render 'shared/header' %>
     <%= render 'shared/flash' %>
