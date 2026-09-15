@@ -19,7 +19,7 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <p><%= button_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), data: { turbo: false } %></p>
-  <% end %>
+  <div class="actions mb-3">
+    <%= button_to t('.sign_in_with_provider.google'), user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "border-2 rounded-xl h-10 w-auto hover:bg-gray-500 active:bg-black active:text-white" %>
+  </div>
 <% end %>
