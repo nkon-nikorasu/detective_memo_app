@@ -317,6 +317,7 @@ Devise.setup do |config|
                   ENV["GOOGLE_CLIENT_ID"],
                   ENV["GOOGLE_CLIENT_SECRET"],
                   scope: "email,profile",
-                  prompt: "select_account"
+                  prompt: "select_account",
+                  callback_url: ENV["GOOGLE_OAUTH_CALLBACK_URL"] 
 
 end
