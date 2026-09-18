@@ -1,25 +1,27 @@
-<h2><%= t('.change_your_password') %></h2>
+<div class="text-center divide-y divide-dashed">
+  <h2 class="text-3xl"><%= t('.title') %></h2>
+  <h2><%= t('.change_your_password') %></h2>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "flex flex-col gap-2 my-2" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+    <div class="field">
+      <p><%= f.label :password, t('.new_password') %></p>
+      <% if @minimum_password_length %>
+        <p><em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em></p>
+      <% end %>
+      <p><%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "border-2 rounded-sm" %></p>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :password, t('.new_password') %></p>
-    <% if @minimum_password_length %>
-      <p><em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em></p>
-    <% end %>
-    <p><%= f.password_field :password, autofocus: true, autocomplete: "new-password" %></p>
-  </div>
+    <div class="field">
+      <p><%= f.label :password_confirmation, t('.confirm_new_password') %></p>
+      <p><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "border-2 rounded-sm" %></p>
+    </div>
 
-  <div class="field">
-    <p><%= f.label :password_confirmation, t('.confirm_new_password') %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
-  </div>
+    <div class="actions">
+      <%= f.submit t('.change_my_password'), class: "border-2 rounded-xl h-10 w-auto p-2 m-2 hover:bg-gray-500 active:bg-black active:text-white" %>
+    </div>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit t('.change_my_password') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
