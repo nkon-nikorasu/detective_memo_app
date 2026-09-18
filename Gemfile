@@ -39,7 +39,7 @@ gem "omniauth-google-oauth2"
 
 gem "omniauth-rails_csrf_protection"
 
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 gem "devise-i18n"
 
@@ -52,6 +52,8 @@ gem "enum_help"
 gem "kaminari"
 
 gem "acts_as_list"
+
+gem "resend"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -76,6 +78,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener_web"
 end
 
 group :test do

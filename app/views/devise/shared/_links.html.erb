@@ -1,5 +1,5 @@
 <%- if controller_name != 'sessions' %>
-  <p><%= link_to t(".sign_in"), new_session_path(resource_name), class: "border-2 rounded-xl h-10 w-20 p-2 hover:bg-gray-500 active:bg-black active:text-white" %></p>
+  <p class="p-2"><%= link_to t(".sign_in"), new_session_path(resource_name), class: "border-2 rounded-xl h-10 w-20 p-2 m-2 hover:bg-gray-500 active:bg-black active:text-white" %></p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -19,7 +19,7 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <div class="actions mb-3">
+  <div class="actions m-3">
     <%= button_to t('.sign_in_with_provider.google'), user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "border-2 rounded-xl h-10 w-auto hover:bg-gray-500 active:bg-black active:text-white" %>
   </div>
 <% end %>
