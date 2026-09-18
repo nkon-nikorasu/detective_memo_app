@@ -1,5 +1,5 @@
 <tr id="time-record-<%= incident_time.id %>">
-  <td class="text-center"><%= "#{yeardeco(incident_time)}#{monthdeco(incident_time)}#{datedeco(incident_time)}#{hourdeco(incident_time)}#{minutedeco(incident_time)}#{seconddeco(incident_time)}" %></td>
+  <td class="text-center"><%= display_incident_time(incident_time) %></td>
   <td class="text-center"><%= incident_time.body %> </td>
   <td class="text-center">
     <%= link_to move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full hover:bg-gray-100 active:bg-gray-300" do %>
