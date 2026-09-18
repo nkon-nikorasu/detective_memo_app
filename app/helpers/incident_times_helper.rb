@@ -1,45 +1,14 @@
 module IncidentTimesHelper
-  def yeardeco(time)
-    if time.year.nil?
-      ""
-    else
-      "#{time.year}年"
-    end
-  end
-  def monthdeco(time)
-    if time.month.nil?
-      ""
-    else
-      "#{time.month}月"
-    end
-  end
-  def datedeco(time)
-    if time.date.nil?
-      ""
-    else
-      "#{time.date}日"
-    end
-  end
-  def hourdeco(time)
-    return "" if time.hour.nil?
-    if time.minute.nil? || time.second.nil?
-      "#{time.hour}時頃"
-    else
-      "#{time.hour}時"
-    end
-  end
-  def minutedeco(time)
-    if time.minute.nil?
-      ""
-    else
-      "#{time.minute}分"
-    end
-  end
-  def seconddeco(time)
-    if time.second.nil?
-      ""
-    else
-      "#{time.second}秒"
-    end
+  def display_incident_time(time)
+    parts = []
+
+    parts << "#{time.year}年" if time.year.present?
+    parts << "#{time.month}月" if time.month.present?
+    parts << "#{time.date}日" if time.date.present?
+    parts << "#{time.hour}時" if time.hour.present?
+    parts << "#{time.minute}分" if time.minute.present?
+    parts << "#{time.second}秒" if time.second.present?
+
+    parts.join
   end
 end
