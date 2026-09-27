@@ -485,6 +485,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   factory_bot_rails
+  faraday
   jbuilder
   jsbundling-rails
   kaminari
