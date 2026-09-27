@@ -9,7 +9,7 @@ RSpec.describe GoogleBooksService do
         id: google_books_id,
         volumeInfo: {
           title: "爆弾",
-          authors: ["呉勝浩"],
+          authors: [ "呉勝浩" ],
           imageLinks: {
             thumbnail: "http://books.google.com/example.jpg"
           }
@@ -20,7 +20,8 @@ RSpec.describe GoogleBooksService do
     before do
       response = instance_double(
         Faraday::Response,
-        body: response_body
+        body: response_body,
+        success?: true
       )
 
       allow(Faraday).to receive(:get).and_return(response)
@@ -33,10 +34,30 @@ RSpec.describe GoogleBooksService do
         {
           id: google_books_id,
           title: "爆弾",
-          authors: ["呉勝浩"],
+          authors: [ "呉勝浩" ],
           thumbnail: "https://books.google.com/example.jpg"
         }
       )
+    end
+
+    context "Google Books APIの取得に失敗した場合" do
+      before do
+        response = instance_double(
+          Faraday::Response,
+          success?: false
+        )
+
+        allow(Faraday).to receive(:get).and_return(response)
+      end
+
+      it "GoogleBooksService::Errorを発生させる" do
+        expect {
+          described_class.find(google_books_id)
+        }.to raise_error(
+          GoogleBooksService::Error,
+          "Google Books APIの取得に失敗しました"
+        )
+      end
     end
   end
 end

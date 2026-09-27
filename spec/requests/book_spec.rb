@@ -15,7 +15,7 @@ RSpec.describe "Books", type: :request do
       {
         id: google_books_id,
         title: "爆弾",
-        authors: ["呉勝浩"],
+        authors: [ "呉勝浩" ],
         thumbnail: "https://books.google.com/example.jpg"
       }
     end
@@ -50,7 +50,7 @@ RSpec.describe "Books", type: :request do
           :book,
           google_books_id: google_books_id,
           title: "爆弾",
-          authors: ["呉勝浩"]
+          authors: [ "呉勝浩" ]
         )
       end
 
@@ -73,6 +73,31 @@ RSpec.describe "Books", type: :request do
             params: { google_books_id: google_books_id }
 
         expect(incident.reload.book).to eq(book)
+      end
+    end
+
+    context "Google Books APIの取得に失敗した場合" do
+      before do
+        allow(GoogleBooksService)
+          .to receive(:find)
+          .with(google_books_id)
+          .and_raise(GoogleBooksService::Error)
+      end
+
+      it "書籍検索画面にリダイレクトする" do
+        post incident_books_path(incident),
+            params: { google_books_id: google_books_id }
+
+        expect(response).to redirect_to(search_incident_books_path(incident))
+      end
+
+      it "エラーメッセージを表示する" do
+        post incident_books_path(incident),
+            params: { google_books_id: google_books_id }
+
+        expect(flash[:alert]).to eq(
+          I18n.t("defaults.flash_message.book_api_error")
+        )
       end
     end
   end
