@@ -43,6 +43,7 @@ RSpec.configure do |config|
   ]
   config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.before(:each, type: :system) do
     if ENV["SELENIUM_DRIVER_URL"].present?
