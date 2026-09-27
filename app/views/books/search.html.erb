@@ -1,0 +1,22 @@
+<div class="my-2 flex flex-col">
+  <div class="border-b-2 text-center bg-lime-100 p-2">
+    <h2 class="text-5xl"><%= t('.title') %></h2>
+  </div>
+  <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex flex-col items-center h-auto my-2" do |f| %>
+    <%= f.search_field :search, class: "border-2 rounded-xl p-2", value: params[:search], placeholder: t('.placeholder') %>
+    <%= f.submit t('.submit'), class: "border-2 rounded-xl h-10 mt-2 w-aout px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
+  <% end %>
+  <div class="flex flex-col items-center">
+    <% @books.each do |book| %>
+      <div class="w-1/2 my-2 flex flex-col items-center border-2 p-2">
+        <%= image_tag google_book_thumbnail(book), size: "160x160" %>
+        <p><%= book[:title] %></p>
+        <p><%= book[:authors]&.join("、") %></p>
+        <%= form_with url: incident_books_path(@incident), id: "new_book" do |f| %>
+            <%= f.hidden_field :google_books_id, value: book[:id] %>
+            <%= f.submit t('.register'), class: "border-2 rounded-xl h-10 w-aout px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white"%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
