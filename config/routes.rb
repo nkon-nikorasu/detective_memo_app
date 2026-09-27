@@ -13,13 +13,17 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-
   # Defines the root path route ("/")
   # root "posts#index"
   root "start_pages#top"
   get "privacy", to: "start_pages#privacy"
   get "terms", to: "start_pages#terms"
   resources :incidents do
+    resources :books, only: :create do
+      collection do
+        get :search
+      end
+    end
     resources :incident_times, only: %i[ index create edit update destroy ] do
       member do
         get :move_higher
