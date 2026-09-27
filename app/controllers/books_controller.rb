@@ -25,6 +25,9 @@ class BooksController < ApplicationController
     @incident.update!(book: book)
 
     redirect_to incident_path(@incident), notice: t("defaults.flash_message.book_created")
+  rescue GoogleBooksService::Error
+    redirect_to search_incident_books_path(@incident),
+                alert: t("defaults.flash_message.book_api_error")
   end
 
   private
