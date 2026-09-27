@@ -8,6 +8,7 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
+      book_api_error: "書籍情報の取得に失敗しました。時間をおいて再度お試しください。"
   helpers:
     submit:
       create: 登録
