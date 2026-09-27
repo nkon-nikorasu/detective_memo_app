@@ -1,4 +1,5 @@
 class GoogleBooksService
+  class Error < StandardError; end
   BASE_URL = "https://www.googleapis.com/books/v1/volumes"
 
   def self.search(query)
@@ -33,8 +34,7 @@ class GoogleBooksService
       }
     )
 
-    p response.status
-    p response.body
+    raise Error, "Google Books APIの取得に失敗しました" unless response.success?
 
     data = JSON.parse(response.body)
     info = data["volumeInfo"]
