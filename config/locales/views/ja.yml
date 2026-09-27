@@ -2,6 +2,7 @@ ja:
   defaults:
     delete_confirm: "事件記録を削除しますか?"
     flash_message:
+      book_created: "書籍を登録しました"
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
       updated: "%{item}を更新しました"
@@ -42,6 +43,12 @@ ja:
       name: 事件名
       tag: タグ
       created_at: 作成日
+  books:
+    search:
+      title: 書籍検索
+      placeholder: 書籍名を入力
+      submit: 検索
+      register: この書籍を登録
   incident_times:
     edit:
       title: 時系列表編集
