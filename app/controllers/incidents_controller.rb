@@ -2,7 +2,7 @@ class IncidentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_incident, only: [ :edit, :update, :destroy, :show ]
   def index
-    @incidents = current_user.incidents.order(created_at: :desc).page(params[:page]).per(5)
+    @incidents = current_user.incidents.includes(:book).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
@@ -46,7 +46,7 @@ class IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.require(:incident).permit(:book, :name, :tag, :body)
+    params.require(:incident).permit(:name, :tag, :body)
   end
 
   def set_incident

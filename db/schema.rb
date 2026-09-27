@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_13_041958) do
+ActiveRecord::Schema[7.2].define(version: 2026_09_22_090845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "google_books_id", null: false
+    t.string "title", null: false
+    t.string "authors", default: [], null: false, array: true
+    t.string "thumbnail_url"
+    t.index ["google_books_id"], name: "index_books_on_google_books_id", unique: true
+  end
 
   create_table "characters", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -42,13 +52,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_13_041958) do
   end
 
   create_table "incidents", force: :cascade do |t|
-    t.string "book", null: false
     t.string "name"
     t.integer "tag"
     t.text "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_incidents_on_book_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
 
@@ -78,6 +89,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_13_041958) do
 
   add_foreign_key "characters", "incidents"
   add_foreign_key "incident_times", "incidents"
+  add_foreign_key "incidents", "books"
   add_foreign_key "incidents", "users"
   add_foreign_key "memos", "incidents"
 end

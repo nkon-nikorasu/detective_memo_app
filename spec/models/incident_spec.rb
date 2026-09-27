@@ -8,26 +8,6 @@ RSpec.describe Incident, type: :model do
       expect(incident).to be_valid
     end
 
-    describe "book" do
-      it "bookがない場合は無効" do
-        incident = build(:incident, book: nil)
-
-        expect(incident).to be_invalid
-      end
-
-      it "bookが30文字以内なら有効" do
-        incident = build(:incident, book: "あ" * 30)
-
-        expect(incident).to be_valid
-      end
-
-      it "bookが31文字以上なら無効" do
-        incident = build(:incident, book: "あ" * 31)
-
-        expect(incident).to be_invalid
-      end
-    end
-
     describe "name" do
       it "nameが30文字以内なら有効" do
         incident = build(:incident, name: "あ" * 30)

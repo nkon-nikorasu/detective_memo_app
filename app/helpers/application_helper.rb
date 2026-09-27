@@ -8,6 +8,9 @@ module ApplicationHelper
     return true if controller_name == "incidents" &&
                  action_name.in?(%w[show edit update])
 
+    return true if controller_name == "books" &&
+                 action_name.in?(%w[search])
+
     return true if controller_name == "memos" &&
                  action_name.in?(%w[index edit update])
 

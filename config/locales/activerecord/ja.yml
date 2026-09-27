@@ -5,9 +5,12 @@ ja:
       incident_time: タイムレコード
       character: 登場人物記録
       memo: メモ
+      book: 書籍
     attributes:
+      book:
+        title: 書籍名
+        authors: 著者
       incident:
-        book: 書籍名
         tag: タグ
         name: 事件名
         body: 説明
