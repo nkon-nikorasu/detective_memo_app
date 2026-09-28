@@ -2,19 +2,33 @@
   <div class="border-b-2 text-center bg-lime-100 p-2">
     <h2 class="text-5xl"><%= t('.title') %></h2>
   </div>
-  <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex flex-col items-center h-auto my-2" do |f| %>
-    <%= f.search_field :search, class: "border-2 rounded-xl p-2", value: params[:search], placeholder: t('.placeholder') %>
-    <%= f.submit t('.submit'), class: "border-2 rounded-xl h-10 mt-2 w-aout px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
+  <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex justify-center items-center h-auto my-2", data: { controller: "book-autocomplete" } do |f| %>
+    <div class="flex w-full max-w-xl" >
+      <%= f.select :search_type, [[t(".search_type.title"), "title"],[t(".search_type.author"), "author"]],{selected: params[:search_type]}, class: "border-2 rounded-xl p-2" %>
+      <div
+        data-controller="autocomplete"
+        data-autocomplete-url-value="<%= autocomplete_incident_books_path(@incident) %>"
+        data-action="autocomplete.change->book-autocomplete#submit"
+        class="relative flex-1 ml-2"
+      >
+        <%= f.search_field :search, class: "border-2 rounded-xl p-2 w-full", value: params[:search], placeholder: t('.placeholder'), autocomplete: "off", data: { autocomplete_target: "input" } %>
+        <ul
+          data-autocomplete-target="results"
+          class="absolute z-50 w-full mt-1 p-2 bg-white border rounded-xl shadow-lg"
+        ></ul>
+      </div>
+    </div>
+    <%= f.submit t('.submit'), class: "border-2 rounded-xl p-2 ml-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
   <% end %>
-  <div class="flex flex-col items-center">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @books.each do |book| %>
-      <div class="w-1/2 my-2 flex flex-col items-center border-2 p-2">
+      <div class="flex flex-col items-center border-2 p-4">
         <%= image_tag google_book_thumbnail(book), size: "160x160" %>
         <p><%= book[:title] %></p>
         <p><%= book[:authors]&.join("、") %></p>
         <%= form_with url: incident_books_path(@incident), id: "new_book" do |f| %>
             <%= f.hidden_field :google_books_id, value: book[:id] %>
-            <%= f.submit t('.register'), class: "border-2 rounded-xl h-10 w-aout px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white"%>
+            <%= f.submit t('.register'), class: "border-2 rounded-xl h-10 w-auot px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white"%>
         <% end %>
       </div>
     <% end %>

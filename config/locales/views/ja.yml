@@ -47,9 +47,13 @@ ja:
   books:
     search:
       title: 書籍検索
-      placeholder: 書籍名を入力
+      placeholder: 書籍名または著者名を入力
       submit: 検索
       register: この書籍を登録
+      search_type:
+        prompt: 検索項目を選択してください
+        title: タイトル
+        author: 著者
   incident_times:
     edit:
       title: 時系列表編集

@@ -3,10 +3,23 @@ class BooksController < ApplicationController
 
   def search
     @books = if params[:search].present?
-              GoogleBooksService.search(params[:search])
+              GoogleBooksService.search(params[:search], params[:search_type])
     else
               []
     end
+  end
+
+  def autocomplete
+    @books = if params[:q].present? && params[:q].length >= 2
+      GoogleBooksService.search(params[:q], params[:search_type])
+    else
+      []
+    end
+
+    if params[:search_type] == "author"
+      @authors = @books.flat_map { |book| book[:authors] || [] }.uniq
+    end
+    render layout: false
   end
 
   def create

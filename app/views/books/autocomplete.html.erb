@@ -1,0 +1,21 @@
+<% if params[:search_type] == "author" %>
+  <% @authors.first(10).each do |author| %>
+    <li
+      role="option"
+      data-autocomplete-value="<%= author %>"
+      class="px-4 py-2 cursor-pointer hover:bg-gray-100"
+    >
+      <%= author %>
+    </li>
+  <% end %>
+<% else %>
+  <% @books.first(10).each do |book| %>
+    <li
+      role="option"
+      data-autocomplete-value="<%= book[:title] %>"
+      class="px-4 py-2 cursor-pointer hover:bg-gray-100"
+    >
+      <%= book[:title] %>
+    </li>
+  <% end %>
+<% end %>

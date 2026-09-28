@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :books, only: :create do
       collection do
         get :search
+        get :autocomplete
       end
     end
     resources :incident_times, only: %i[ index create edit update destroy ] do
