@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BookAutocompleteController from "./book_autocomplete_controller"
+application.register("book-autocomplete", BookAutocompleteController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
