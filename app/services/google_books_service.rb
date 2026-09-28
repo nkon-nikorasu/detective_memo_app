@@ -2,12 +2,20 @@ class GoogleBooksService
   class Error < StandardError; end
   BASE_URL = "https://www.googleapis.com/books/v1/volumes"
 
-  def self.search(query)
+  def self.search(query, search_type)
+    search_query =
+      if search_type == "author"
+        "inauthor:#{query}"
+      else
+        "intitle:#{query}"
+      end
+
     response = Faraday.get(
       BASE_URL,
       {
-        q: "intitle:#{query}",
-        key: ENV["GOOGLE_BOOKS_API_KEY"]
+        q: search_query,
+        key: ENV["GOOGLE_BOOKS_API_KEY"],
+        maxResults: 20
       }
     )
 
