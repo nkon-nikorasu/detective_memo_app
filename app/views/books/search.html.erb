@@ -20,9 +20,9 @@
     </div>
     <%= f.submit t('.submit'), class: "border-2 rounded-xl p-2 ml-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
   <% end %>
-  <div class="flex flex-col items-center">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @books.each do |book| %>
-      <div class="w-1/2 my-2 flex flex-col items-center border-2 p-2">
+      <div class="flex flex-col items-center border-2 p-4">
         <%= image_tag google_book_thumbnail(book), size: "160x160" %>
         <p><%= book[:title] %></p>
         <p><%= book[:authors]&.join("、") %></p>
