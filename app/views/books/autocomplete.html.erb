@@ -1,0 +1,9 @@
+<% @books.first(5).each do |book| %>
+  <li role="option" data-autocomplete-value="<%= book[:title] %>">
+    <%= book[:title] %>
+
+    <% if book[:authors].present? %>
+      - <%= book[:authors].join(", ") %>
+    <% end %>
+  </li>
+<% end %>
