@@ -1,0 +1,2 @@
+class CharacterRelationshipsController < ApplicationController
+end
