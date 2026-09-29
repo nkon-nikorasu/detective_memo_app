@@ -33,6 +33,6 @@ Rails.application.routes.draw do
     end
     resources :characters, only: %I[ index create edit update destroy]
     resources :memos, only: %I[ index create edit update destroy]
-    resources :character_relationships, only: %i[new create edit update destroy]
+    resources :character_relationships, only: %i[index create edit update destroy]
   end
 end
