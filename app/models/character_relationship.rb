@@ -1,0 +1,2 @@
+class CharacterRelationship < ApplicationRecord
+end
