@@ -14,6 +14,9 @@ module ApplicationHelper
     return true if controller_name == "memos" &&
                  action_name.in?(%w[index edit update])
 
+    return true if controller_name == "character_relationships" &&
+                 action_name.in?(%w[index create edit update])
+
     return true if controller_name == "characters" &&
                  action_name.in?(%w[index edit update])
 
