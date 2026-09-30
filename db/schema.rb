@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_22_090845) do
+ActiveRecord::Schema[7.2].define(version: 2026_09_29_041951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,19 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_22_090845) do
     t.string "authors", default: [], null: false, array: true
     t.string "thumbnail_url"
     t.index ["google_books_id"], name: "index_books_on_google_books_id", unique: true
+  end
+
+  create_table "character_relationships", force: :cascade do |t|
+    t.bigint "source_character_id", null: false
+    t.bigint "target_character_id", null: false
+    t.string "relation", null: false
+    t.string "source_to_target_impression"
+    t.string "target_to_source_impression"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_character_id", "target_character_id"], name: "idx_on_source_character_id_target_character_id_61ef0dac88", unique: true
+    t.index ["source_character_id"], name: "index_character_relationships_on_source_character_id"
+    t.index ["target_character_id"], name: "index_character_relationships_on_target_character_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -87,6 +100,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_22_090845) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "character_relationships", "characters", column: "source_character_id"
+  add_foreign_key "character_relationships", "characters", column: "target_character_id"
   add_foreign_key "characters", "incidents"
   add_foreign_key "incident_times", "incidents"
   add_foreign_key "incidents", "books"
