@@ -4,6 +4,7 @@
     <li><%= link_to "事件詳細", incident_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white " %></li>
     <li><%= link_to @incident.book.present? ? "書籍変更" : "書籍登録", search_incident_books_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white " %></li>
     <li><%= link_to "人物登録", incident_characters_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
+    <li><%= link_to "人物相関図", incident_character_relationships_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
     <li><%= link_to "時系列登録", incident_incident_times_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
     <li><%= link_to "推理メモ", incident_memos_path(@incident), class: "flex flex-1 bg-blue-200 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white" %></li>
   </ul>
