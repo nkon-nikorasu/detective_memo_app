@@ -1,0 +1,18 @@
+<tr>
+  <td class="border p-2">
+    <%= character_relationship.other_character(@character).name %>
+  </td>
+
+  <td class="border p-2">
+    <%= character_relationship.relation %>
+  </td>
+
+  <td class="border p-2">
+    <%= character_relationship.impression_from(@character) %>
+  </td>
+
+  <td class="border p-2">
+    <% other = character_relationship.other_character(@character) %>
+    <%= character_relationship.impression_from(other) %>
+  </td>
+</tr>
