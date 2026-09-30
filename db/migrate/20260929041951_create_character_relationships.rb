@@ -17,7 +17,7 @@ class CreateCharacterRelationships < ActiveRecord::Migration[7.2]
     end
 
      add_index :character_relationships,
-              [:source_character_id, :target_character_id],
+              [ :source_character_id, :target_character_id ],
               unique: true
   end
 end
