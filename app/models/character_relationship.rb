@@ -30,7 +30,7 @@ class CharacterRelationship < ApplicationRecord
   def characters_must_be_different
     return unless source_character_id == target_character_id
 
-    errors.add(:target_character, "に同じ人物は指定できません")
+    errors.add(:target_character_id, "に同じ人物は指定できません")
   end
 
   def relationship_must_be_unique
