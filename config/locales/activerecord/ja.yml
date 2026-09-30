@@ -6,6 +6,7 @@ ja:
       character: 登場人物記録
       memo: メモ
       book: 書籍
+      character_relationship: 登場人物関係
     attributes:
       book:
         title: 書籍名
@@ -32,6 +33,12 @@ ja:
       memo:
         tag: タグ
         body: メモ
+      character_relationship:
+        source_character_id: 本人
+        target_character_id: 相手
+        relation: 関係
+        source_to_target_impression: 本人からの印象
+        target_to_source_impression: 相手からの印象
     errors:
       models:
         user:

@@ -67,6 +67,10 @@ ja:
     index:
       title: 登場人物登録
       index: 登場人物一覧
+  character_relationships:
+    index:
+      title: 人物相関図
+      index: 人物関係表
   memos:
     edit:
       title: メモ編集
