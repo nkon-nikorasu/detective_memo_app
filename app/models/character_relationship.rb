@@ -36,9 +36,16 @@ class CharacterRelationship < ApplicationRecord
   def relationship_must_be_unique
     return if source_character_id.blank? || target_character_id.blank?
 
-    duplicate = CharacterRelationship
-                .where(source_character_id: target_character_id,
-                       target_character_id: source_character_id)
+    duplicate = CharacterRelationship.where(
+      source_character_id: source_character_id,
+      target_character_id: target_character_id
+    ).or(
+      CharacterRelationship.where(
+        source_character_id: target_character_id,
+        target_character_id: source_character_id
+      )
+    )
+
 
     duplicate = duplicate.where.not(id: id) if persisted?
 
