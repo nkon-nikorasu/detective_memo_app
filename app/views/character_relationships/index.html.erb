@@ -2,34 +2,12 @@
   <div class="border-b-2 flex justify-center p-2 bg-lime-100">
     <p class="text-5xl"><%= t('.title') %></p>
   </div>
-  <%= form_with model: [@incident, @character_relationship], id: "character-relationship-form", class: "flex flex-col items-center" do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div class="flex">
-      <div class="flex flex-col justify-center items-center my-3">
-        <%= f.label :source_character_id %>
-        <%= f.collection_select :source_character_id, @characters, :id, :name, { prompt: "選択してください" }, class: " p-2 border-2 rounded-xl" %>
-      </div>
-      <div class="flex flex-col justify-center items-center my-3">
-        <%= f.label :target_to_source_impression %>
-        <%= f.text_field :target_to_source_impression, class: "border-2 w-auto h-10 px-2 rounded-xl", placeholder: "相手からの印象＊任意" %>
-      </div>
-    </div>
-    <div class="flex flex-col justify-center items-center my-3">
-      <%= f.label :relation %>
-      <%= f.text_field :relation, class: "border-2 w-auto h-10 px-2 rounded-xl", placeholder: "関係" %>
-    </div>
-    <div class="flex">
-      <div class="flex flex-col justify-center items-center my-3">
-        <%= f.label :target_character_id %>
-        <%= f.collection_select :target_character_id, @characters, :id, :name, { prompt: "選択してください" }, class: " p-2 border-2 rounded-xl" %>
-      </div>
-      <div class="flex flex-col justify-center items-center my-3">
-        <%= f.label :source_to_target_impression %>
-        <%= f.text_field :source_to_target_impression, class: "border-2 w-auto h-10 px-2 rounded-xl", placeholder: "本人からの印象＊任意" %>
-      </div>
-    </div>
-    <%= f.submit class: "border-2 rounded-xl h-10 w-20 hover:bg-gray-500 active:bg-black active:text-white" %>
-  <% end %>
+  <div id="form-flash">
+    <%= render 'shared/flash' %>
+  </div>
+  <div id="character-relationship-form-container">
+    <%= render "form", character_relationship: @character_relationship %>
+  </div>
   <p class="border-b-2 w-full mb-2 text-center"><%= t('.index') %></p>
   <%= form_with url: incident_character_relationships_path(@incident), method: :get, class: "flex justify-center my-3" do |f| %>
     <%= f.collection_select :character_id, @characters, :id, :name, { prompt: "人物を選択してください", selected: params[:character_id]}, class: "p-2 border-2 rounded-xl" %>
@@ -38,6 +16,9 @@
   <div id="characters_relationship-table" class="flex flex-col text-center w-full">
     <% if @character.present? %>
       <p class="text-xl my-3"><%= @character.name %>の人物関係</p>
+      <div id="flash">
+        <%= render 'shared/flash' %>
+      </div>
       <table class="border-collapse border">
         <thead>
           <tr>
@@ -49,9 +30,10 @@
             <th class="border p-2">
               <%= CharacterRelationship.human_attribute_name(:target_character_id) %> → <%= @character.name %>
             </th>
+            <th>削除</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="characters-relationship-table">
           <%= render @character_relationships %>
         </tbody>
       </table>

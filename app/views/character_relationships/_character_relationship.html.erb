@@ -1,18 +1,16 @@
-<tr>
+<tr id="character-relationship-id-<%= character_relationship.id %>" >
   <td class="border p-2">
     <%= character_relationship.other_character(@character).name %>
   </td>
-
   <td class="border p-2">
     <%= character_relationship.relation %>
   </td>
-
   <td class="border p-2">
     <%= character_relationship.impression_from(@character) %>
   </td>
-
   <td class="border p-2">
     <% other = character_relationship.other_character(@character) %>
     <%= character_relationship.impression_from(other) %>
   </td>
+  <td class="bg-red-300 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_character_relationship_path(@incident, character_relationship), data: {turbo_method: :delete}, class: "flex justify-center w-full" %></td>
 </tr>

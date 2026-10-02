@@ -34,6 +34,8 @@ ja:
         tag: タグ
         body: メモ
       character_relationship:
+        source_character: 本人
+        target_character: 相手
         source_character_id: 本人
         target_character_id: 相手
         relation: 関係
