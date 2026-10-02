@@ -1,0 +1,53 @@
+<%= form_with model: [@incident, character_relationship],
+              id: "character-relationship-form",
+              class: "flex flex-col items-center" do |f| %>
+
+  <%= render "shared/error_messages", object: f.object %>
+
+  <div class="flex">
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :source_character_id %>
+      <%= f.collection_select :source_character_id,
+                              @characters,
+                              :id,
+                              :name,
+                              { prompt: "選択してください" },
+                              class: "p-2 border-2 rounded-xl" %>
+    </div>
+
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :target_to_source_impression %>
+      <%= f.text_field :target_to_source_impression,
+                       class: "border-2 w-auto h-10 px-2 rounded-xl",
+                       placeholder: "相手からの印象＊任意" %>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center items-center my-3">
+    <%= f.label :relation %>
+    <%= f.text_field :relation,
+                     class: "border-2 w-auto h-10 px-2 rounded-xl",
+                     placeholder: "関係" %>
+  </div>
+
+  <div class="flex">
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :target_character_id %>
+      <%= f.collection_select :target_character_id,
+                              @characters,
+                              :id,
+                              :name,
+                              { prompt: "選択してください" },
+                              class: "p-2 border-2 rounded-xl" %>
+    </div>
+
+    <div class="flex flex-col justify-center items-center my-3">
+      <%= f.label :source_to_target_impression %>
+      <%= f.text_field :source_to_target_impression,
+                       class: "border-2 w-auto h-10 px-2 rounded-xl",
+                       placeholder: "本人からの印象＊任意" %>
+    </div>
+  </div>
+
+  <%= f.submit class: "border-2 rounded-xl h-10 w-20 hover:bg-gray-500 active:bg-black active:text-white" %>
+<% end %>
