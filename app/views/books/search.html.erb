@@ -2,6 +2,9 @@
   <div class="border-b-2 text-center bg-lime-100 p-2">
     <h2 class="text-5xl"><%= t('.title') %></h2>
   </div>
+  <div id="flash">
+    <%= render 'shared/flash' %>
+  </div>
   <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex justify-center items-center h-auto my-2", data: { controller: "book-autocomplete" } do |f| %>
     <div class="flex w-full max-w-xl" >
       <%= f.select :search_type, [[t(".search_type.title"), "title"],[t(".search_type.author"), "author"]],{selected: params[:search_type]}, class: "border-2 rounded-xl p-2" %>
