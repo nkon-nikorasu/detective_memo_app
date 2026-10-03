@@ -9,13 +9,10 @@ class IncidentTimesController < ApplicationController
   end
 
   def create
-    puts "ここまで通っている"
     @incident = current_user.incidents.find(params[:incident_id])
     @incident_time = @incident.incident_times.build(incident_time_params)
     @incident_time.save
-    p "インシデントタイムです>#{@incident_time.class}"
-    p "インシデントタイムです>#{@incident_time.inspect}"
-    puts "ここまで通ってます"
+    flash.now[:notice] = t("defaults.flash_message.created", item: IncidentTime.model_name.human)
   end
 
   def edit
