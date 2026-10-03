@@ -9,4 +9,7 @@
   <%= turbo_stream.replace "time-record-form" do %>
     <%= render 'incident_times/form', incident: @incident, incident_time: IncidentTime.new %>
   <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
 <% end %>
