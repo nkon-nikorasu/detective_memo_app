@@ -71,6 +71,8 @@ ja:
     index:
       title: 人物相関図
       index: 人物関係表
+    edit:
+      title: 人物関係編集
   memos:
     edit:
       title: メモ編集

@@ -48,6 +48,6 @@
                        placeholder: "本人からの印象＊任意" %>
     </div>
   </div>
-
+  <%= hidden_field_tag :character_id, params[:character_id] %>
   <%= f.submit class: "border-2 rounded-xl h-10 w-20 hover:bg-gray-500 active:bg-black active:text-white" %>
 <% end %>

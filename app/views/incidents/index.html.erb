@@ -3,6 +3,9 @@
   <div class="border-b-2 text-center bg-lime-100 mx-2">
     <h2 class="text-5xl"><%= t('.title') %></h2>
   </div>
+  <div id="flash">
+    <%= render 'shared/flash' %>
+  </div>
   <div class="flex flex-col text-center">
     <% if @incidents.present? %>
       <%= render @incidents %>
