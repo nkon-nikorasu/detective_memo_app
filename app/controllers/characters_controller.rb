@@ -12,6 +12,7 @@ class CharactersController < ApplicationController
     @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.build(character_params)
     @character.save
+    flash.now[:notice] = t("defaults.flash_message.created", item: Character.model_name.human)
   end
 
   def edit
