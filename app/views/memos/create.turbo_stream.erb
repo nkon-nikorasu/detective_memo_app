@@ -9,4 +9,7 @@
   <%= turbo_stream.replace "memo-form" do %>
     <%= render 'memos/form', incident: @incident, memo: Memo.new %>
   <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
 <% end %>
