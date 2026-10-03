@@ -19,6 +19,8 @@ class GoogleBooksService
       }
     )
 
+    raise Error, "Google Books APIの取得に失敗しました" unless response.success?
+
     data = JSON.parse(response.body)
 
     data.fetch("items", []).map do |book|
