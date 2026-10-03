@@ -2,7 +2,7 @@
   <div class="border-b-2 flex justify-center p-2 bg-lime-100">
     <p class="text-5xl"><%= t('.title') %></p>
   </div>
-  <div id="form-flash">
+  <div id="flash">
     <%= render 'shared/flash' %>
   </div>
   <div id="character-relationship-form-container">
@@ -16,9 +16,6 @@
   <div id="characters_relationship-table" class="flex flex-col text-center w-full">
     <% if @character.present? %>
       <p class="text-xl my-3"><%= @character.name %>の人物関係</p>
-      <div id="flash">
-        <%= render 'shared/flash' %>
-      </div>
       <table class="border-collapse border">
         <thead>
           <tr>
@@ -30,6 +27,7 @@
             <th class="border p-2">
               <%= CharacterRelationship.human_attribute_name(:target_character_id) %> → <%= @character.name %>
             </th>
+            <th>更新</th>
             <th>削除</th>
           </tr>
         </thead>
