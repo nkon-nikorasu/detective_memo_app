@@ -12,6 +12,7 @@ class MemosController < ApplicationController
     @incident = current_user.incidents.find(params[:incident_id])
     @memo = @incident.memos.build(memo_params)
     @memo.save
+    flash.now[:notice] = t("defaults.flash_message.created", item: Memo.model_name.human)
   end
 
   def edit
