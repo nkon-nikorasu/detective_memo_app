@@ -9,4 +9,7 @@
   <%= turbo_stream.replace "character-form" do %>
     <%= render 'characters/form', incident: @incident, character: Character.new %>
   <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
 <% end %>
