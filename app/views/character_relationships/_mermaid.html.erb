@@ -1,0 +1,29 @@
+<pre class="mermaid" data-controller="mermaid">
+flowchart LR
+  <% characters.each do |character| %>
+    Char<%= character.id %>(["<%= escape_mermaid_label(character.name) %>"])
+    class Char<%= character.id %> characterNode;
+  <% end %>
+
+  <% relationships.each do |relation| %>
+
+    <% if relation.source_to_target_impression.present? %>
+      Char<%= relation.source_character_id %> impression_source_<%= relation.id %>@-->|"<%= escape_mermaid_label(relation.source_to_target_impression) %>"| Char<%= relation.target_character_id %>
+      class impression_source_<%= relation.id %> sourceEdge;
+    <% end %>
+
+    <% if relation.target_to_source_impression.present? %>
+      Char<%= relation.target_character_id %> impression_target_<%= relation.id %>@-->|"<%= escape_mermaid_label(relation.target_to_source_impression) %>"| Char<%= relation.source_character_id %>
+      class impression_target_<%= relation.id %> targetEdge;
+    <% end %>
+
+    Char<%= relation.target_character_id %> relationship_<%= relation.id %>@---|"<%= escape_mermaid_label(relation.relation) %>"| Char<%= relation.source_character_id %>
+    class relationship_<%= relation.id %> relationshipEdge;
+
+  <% end %>
+
+  classDef sourceEdge stroke:#2563eb,stroke-width:2px;
+  classDef targetEdge stroke:#dc2626,stroke-width:2px;
+  classDef relationshipEdge stroke:#16a34a,stroke-width:3px;
+  classDef characterNode fill:#f8fafc,stroke:#475569,stroke-width:2px,color:#0f172a;
+</pre>
