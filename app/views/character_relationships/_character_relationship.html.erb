@@ -2,13 +2,13 @@
   <td class="border p-2">
     <%= character_relationship.other_character(@character).name %>
   </td>
-  <td class="border p-2">
+  <td class="border p-2 bg-green-100">
     <%= character_relationship.relation %>
   </td>
-  <td class="border p-2">
+  <td class="border p-2 bg-blue-100">
     <%= character_relationship.impression_from(@character) %>
   </td>
-  <td class="border p-2">
+  <td class="border p-2 bg-red-100">
     <% other = character_relationship.other_character(@character) %>
     <%= character_relationship.impression_from(other) %>
   </td>
