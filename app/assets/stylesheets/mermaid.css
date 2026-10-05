@@ -1,0 +1,28 @@
+.mermaid .edgeLabel {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+.mermaid .edgeLabel .labelBkg {
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+}
+
+.mermaid .edgeLabel p {
+  background-color: transparent !important;
+  margin: 0 !important;
+}
+
+.mermaid .label[data-id^="impression_source_"] .labelBkg {
+  background-color: #dbeafe !important;
+  border: 2px solid #2563eb !important;
+}
+
+.mermaid .label[data-id^="impression_target_"] .labelBkg {
+  background-color: #fee2e2 !important;
+  border: 2px solid #dc2626 !important;
+}
+
+.mermaid .label[data-id^="relationship_"] .labelBkg {
+  background-color: #dcfce7 !important;
+  border: 2px solid #16a34a !important;
+}
