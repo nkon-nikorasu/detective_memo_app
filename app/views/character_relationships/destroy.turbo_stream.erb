@@ -1,5 +1,11 @@
 <%= turbo_stream.remove "character-relationship-id-#{@character_relationship.id}" %>
 
+<%= turbo_stream.update "character-relationship-mermaid" do %>
+  <%= render "mermaid",
+             characters: @characters,
+             relationships: @relationships %>
+<% end %>
+
 <%= turbo_stream.update "flash" do %>
   <%= render "shared/flash" %>
 <% end %>

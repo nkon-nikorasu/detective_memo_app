@@ -1,10 +1,11 @@
 class CharacterRelationshipsController < ApplicationController
   before_action :set_incident
-  before_action :set_characters, only: %i[index create edit update]
+  before_action :set_characters, only: %i[index create edit update destroy]
   before_action :set_character_relationship, only: %i[edit update destroy]
 
   def index
     @character_relationship = CharacterRelationship.new
+    @relationships = relationships_for_incident
     if params[:character_id].present?
       @character = @incident.characters.find(params[:character_id])
       @character_relationships = @character.relationships
@@ -32,6 +33,8 @@ class CharacterRelationshipsController < ApplicationController
       )
 
     if @character_relationship.save
+      @relationships = relationships_for_incident
+
       flash.now[:notice] = t(
         "defaults.flash_message.created",
         item: CharacterRelationship.model_name.human
@@ -72,6 +75,7 @@ class CharacterRelationshipsController < ApplicationController
 
   def destroy
     @character_relationship.destroy!
+    @relationships = relationships_for_incident
     flash.now[:notice] = t("defaults.flash_message.deleted", item: CharacterRelationship.model_name.human)
   end
 

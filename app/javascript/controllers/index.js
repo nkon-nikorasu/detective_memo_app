@@ -10,5 +10,8 @@ application.register("book-autocomplete", BookAutocompleteController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MermaidController from "./mermaid_controller"
+application.register("mermaid", MermaidController)
+
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)

@@ -69,8 +69,10 @@ ja:
       index: 登場人物一覧
   character_relationships:
     index:
-      title: 人物相関図
+      title: 人物関係登録
       index: 人物関係表
+      mermaid: 人物相関図
+      no_relationships: "人物関係が登録されていません"
     edit:
       title: 人物関係編集
   memos:

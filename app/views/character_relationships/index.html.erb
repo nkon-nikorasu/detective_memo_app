@@ -13,18 +13,18 @@
     <%= f.collection_select :character_id, @characters, :id, :name, { prompt: "人物を選択してください", selected: params[:character_id]}, class: "p-2 border-2 rounded-xl" %>
     <%= f.submit "表示", class: "border-2 rounded-xl px-3 ml-2 hover:bg-gray-500 active:bg-black active:text-white" %>
   <% end %>
-  <div id="characters_relationship-table" class="flex flex-col text-center w-full">
+  <div id="characters-relationship-table" class="flex flex-col text-center w-full">
     <% if @character.present? %>
       <p class="text-xl my-3"><%= @character.name %>の人物関係</p>
       <table class="border-collapse border">
         <thead>
           <tr>
             <th class="border p-2"><%= CharacterRelationship.human_attribute_name(:target_character_id) %></th>
-            <th class="border p-2"><%= CharacterRelationship.human_attribute_name(:relation) %></th>
-            <th class="border p-2">
+            <th class="border p-2 bg-green-100"><%= CharacterRelationship.human_attribute_name(:relation) %></th>
+            <th class="border p-2 bg-blue-100">
               <%= @character.name %> → <%= CharacterRelationship.human_attribute_name(:target_character_id) %>
             </th>
-            <th class="border p-2">
+            <th class="border p-2 bg-red-100">
               <%= CharacterRelationship.human_attribute_name(:target_character_id) %> → <%= @character.name %>
             </th>
             <th>更新</th>
@@ -36,5 +36,9 @@
         </tbody>
       </table>
     <% end %>
+    <p class="border-b-2 w-full my-2 text-center"><%= t('.mermaid') %></p>
+    <div id="character-relationship-mermaid" class="w-full overflow-x-auto my-5 border-2">
+      <%= render "mermaid", characters: @characters, relationships: @relationships %>
+    </div>
   </div>
 </div>
