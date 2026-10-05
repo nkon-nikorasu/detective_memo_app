@@ -1,7 +1,10 @@
 class CharacterRelationship < ApplicationRecord
   belongs_to :source_character, class_name: "Character"
   belongs_to :target_character, class_name: "Character"
-
+  validates :source_to_target_impression,
+            :target_to_source_impression,
+            :relation,
+            length: { maximum: 10 }
   validates :relation, presence: true
 
   validate :characters_must_be_different
@@ -28,6 +31,7 @@ class CharacterRelationship < ApplicationRecord
   private
 
   def characters_must_be_different
+    return if source_character_id.blank? || target_character_id.blank?
     return unless source_character_id == target_character_id
 
     errors.add(:target_character_id, "に同じ人物は指定できません")
