@@ -25,4 +25,10 @@ module ApplicationHelper
 
     false
   end
+
+  def sidebar_active?(controller, action = nil)
+    return false unless controller_name == controller
+
+    action.nil? || action_name == action
+  end
 end
