@@ -1,6 +1,6 @@
 ja:
   defaults:
-    delete_confirm: "事件記録を削除しますか?"
+    delete_confirm: "%{item}を削除しますか?"
     flash_message:
       book_created: "書籍を登録しました"
       created: "%{item}を作成しました"

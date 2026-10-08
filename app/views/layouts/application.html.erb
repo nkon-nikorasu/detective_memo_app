@@ -34,7 +34,7 @@
   </head>
   <body class="flex flex-col min-h-screen text-slate-900 font-serif">
     <%= render 'shared/header' %>
-    <div class="flex flex-grow">
+    <div class="flex flex-col md:flex-row flex-grow">
       <% if show_incident_sidebar? %>
         <%= render "shared/sidebar" %>
       <% end %>
