@@ -4,13 +4,10 @@
   <% end %>
 <% else %>
   <%= turbo_stream.replace "character-id-#{@character.id}" do %>
-    <%= render partial: "characters/character",
-               locals: { character: @character, page_type: "edit" } %>
+    <%= render partial: "characters/character", locals: { character: @character } %>
   <% end %>
-
   <%= turbo_stream.update "flash" do %>
     <%= render "shared/flash" %>
   <% end %>
-
   <%= turbo_stream.update "modal", "" %>
 <% end %>
