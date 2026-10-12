@@ -1,7 +1,7 @@
 
   <%= form_with model: [incident, incident_time], id: "time-record-form", class: "flex flex-col w-full items-center justify-center" do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="flex w-full justify-center items-center mt-3 rounded-xl border-2 divide-x divide-gray-300">
+    <div class="flex flex-col md:flex-row w-full justify-center items-center mt-3 rounded-xl border-2 divide-x divide-gray-300">
       <%= f.number_field :year, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:year) %>
       <%= f.number_field :month, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:month) %>
       <%= f.number_field :date, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:date) %>
