@@ -1,0 +1,13 @@
+<% if @incident_time.errors.present? %>
+  <%= turbo_stream.replace "time-record-form" do %>
+    <%= render 'incident_times/form', incident: @incident, incident_time: @incident_time %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "time-record-#{@incident_time.id}" do %>
+    <%= render partial: 'incident_times/incident_time', locals: { incident_time: @incident_time } %>
+  <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
+  <%= turbo_stream.update "modal", "" %>
+<% end %>
