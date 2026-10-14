@@ -1,21 +1,30 @@
-<%= turbo_stream.update "character-relationship-form-container" do %>
-  <% if @character_relationship.persisted? %>
-    <%= render "form",
-               character_relationship: CharacterRelationship.new %>
-  <% else %>
-    <%= render "form",
-               character_relationship: @character_relationship %>
-  <% end %>
-<% end %>
+<% if @character_relationship.errors.present? %>
 
-<% if @character_relationship.persisted? %>
+  <%= turbo_stream.replace "character-relationship-form" do %>
+    <%= render "form",
+               incident: @incident, character_relationship: @character_relationship %>
+  <% end %>
+
+<% else %>
+
+  <%= turbo_stream.update "character-selector" do %>
+    <%= render "character_selector" %>
+  <% end %>
+
+  <%= turbo_stream.update "characters-relationship-table" do %>
+    <%= render "relationships_table" %>
+  <% end %>
+
   <%= turbo_stream.update "character-relationship-mermaid" do %>
     <%= render "mermaid",
                characters: @characters,
                relationships: @relationships %>
   <% end %>
-<% end %>
 
-<%= turbo_stream.update "flash" do %>
-  <%= render "shared/flash" %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
+
+  <%= turbo_stream.update "modal", "" %>
+
 <% end %>
