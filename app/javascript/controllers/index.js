@@ -16,5 +16,8 @@ application.register("mermaid", MermaidController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import RedirectController from "./redirect_controller"
+application.register("redirect", RedirectController)
+
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
