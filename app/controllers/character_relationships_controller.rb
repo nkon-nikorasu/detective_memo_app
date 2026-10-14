@@ -1,17 +1,16 @@
 class CharacterRelationshipsController < ApplicationController
-  before_action :set_incident
-  before_action :set_characters, only: %i[index create edit update destroy]
+  before_action :set_incident, only: %i[index new create edit update destroy]
+  before_action :set_characters, only: %i[index new create edit update destroy]
   before_action :set_character_relationship, only: %i[edit update destroy]
 
   def index
     @character_relationship = CharacterRelationship.new
     @relationships = relationships_for_incident
-    if params[:character_id].present?
-      @character = @incident.characters.find(params[:character_id])
-      @character_relationships = @character.relationships
-    else
-      @character_relationships = CharacterRelationship.none
-    end
+    set_selected_character_relationships
+  end
+
+  def new
+    @character_relationship = CharacterRelationship.new
   end
 
   def create
@@ -33,8 +32,7 @@ class CharacterRelationshipsController < ApplicationController
       )
 
     if @character_relationship.save
-      @relationships = relationships_for_incident
-
+      set_relationship_display
       flash.now[:notice] = t(
         "defaults.flash_message.created",
         item: CharacterRelationship.model_name.human
@@ -65,11 +63,11 @@ class CharacterRelationshipsController < ApplicationController
       )
 
     if @character_relationship.save
-      redirect_to incident_character_relationships_path(@incident, character_id: params[:character_id]),
-      notice: t("defaults.flash_message.updated", item: CharacterRelationship.model_name.human)
-    else
-      flash.now[:alert] = t("defaults.flash_message.not_updated", item: CharacterRelationship.model_name.human)
-      render :edit, status: :unprocessable_entity
+      set_relationship_display
+      flash.now[:notice] = t(
+        "defaults.flash_message.updated",
+        item: CharacterRelationship.model_name.human
+      )
     end
   end
 
@@ -108,5 +106,27 @@ class CharacterRelationshipsController < ApplicationController
       :source_to_target_impression,
       :target_to_source_impression
     )
+  end
+
+  def set_selected_character_relationships
+    if params[:character_id].present?
+      @character = @incident.characters.find(params[:character_id])
+      @character_relationships = relationships_for_character(@character)
+    else
+      @character_relationships = CharacterRelationship.none
+    end
+  end
+
+  def set_relationship_display
+    @relationships = relationships_for_incident
+    @character = @character_relationship.source_character
+    @character_relationships = relationships_for_character(@character)
+  end
+
+  def relationships_for_character(character)
+    relationships_for_incident.where(
+      "source_character_id = :id OR target_character_id = :id",
+      id: character.id
+    ).order(:created_at, :id)
   end
 end
