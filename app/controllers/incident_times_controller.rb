@@ -11,8 +11,14 @@ class IncidentTimesController < ApplicationController
   def create
     @incident = current_user.incidents.find(params[:incident_id])
     @incident_time = @incident.incident_times.build(incident_time_params)
-    @incident_time.save
-    flash.now[:notice] = t("defaults.flash_message.created", item: IncidentTime.model_name.human)
+    if @incident_time.save
+      flash.now[:notice] = t("defaults.flash_message.created", item: IncidentTime.model_name.human)
+    end
+  end
+
+  def new
+    @incident = current_user.incidents.find(params[:incident_id])
+    @incident_time = @incident.incident_times.build
   end
 
   def edit
@@ -20,11 +26,7 @@ class IncidentTimesController < ApplicationController
 
   def update
     if @incident_time.update(incident_time_params)
-      redirect_to incident_incident_times_path(@incident, anchor: "time-record-#{@incident_time.id}"),
-      notice: t("defaults.flash_message.updated", item: IncidentTime.model_name.human)
-    else
-      flash.now[:alert] = t("defaults.flash_message.not_updated", item: IncidentTime.model_name.human)
-      render :edit, status: :unprocessable_entity
+      flash.now[:notice] = t("defaults.flash_message.updated", item: IncidentTime.model_name.human)
     end
   end
 

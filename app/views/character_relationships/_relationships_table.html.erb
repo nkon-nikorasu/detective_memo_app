@@ -1,0 +1,22 @@
+<% if @character.present? %>
+  <p class="text-xl my-3"><%= @character.name %>の人物関係</p>
+  <table class="border-collapse border">
+    <thead>
+      <tr>
+        <th class="border p-2"><%= CharacterRelationship.human_attribute_name(:target_character_id) %></th>
+        <th class="border p-2 bg-green-100"><%= CharacterRelationship.human_attribute_name(:relation) %></th>
+        <th class="border p-2 bg-blue-100">
+          <%= @character.name %> → <%= CharacterRelationship.human_attribute_name(:target_character_id) %>
+        </th>
+        <th class="border p-2 bg-red-100">
+          <%= CharacterRelationship.human_attribute_name(:target_character_id) %> → <%= @character.name %>
+        </th>
+        <th>更新</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @character_relationships %>
+    </tbody>
+  </table>
+<% end %>

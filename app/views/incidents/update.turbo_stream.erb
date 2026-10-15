@@ -1,0 +1,16 @@
+<% if @incident.errors.present? %>
+  <%= turbo_stream.replace "incident-form" do %>
+    <%= render "form", incident: @incident %>
+  <% end %>
+<% else %>
+
+  <%= turbo_stream.update "incident-profile" do %>
+    <%= render "incidents/incident_profile", incident: @incident %>
+  <% end %>
+
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
+
+  <%= turbo_stream.update "modal", "" %>
+<% end %>

@@ -1,0 +1,15 @@
+<% if @incident.errors.present? %>
+  <%= turbo_stream.replace "incident-form" do %>
+    <%= render "form", incident: @incident %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append "modal" do %>
+    <div data-controller="redirect"
+         data-redirect-url-value="<%= incident_path(@incident) %>">
+    </div>
+  <% end %>
+
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
+<% end %>

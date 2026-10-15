@@ -8,11 +8,17 @@ class MemosController < ApplicationController
     @memo = Memo.new
   end
 
+  def new
+    @incident = current_user.incidents.find(params[:incident_id])
+    @memo = @incident.memos.build
+  end
+
   def create
     @incident = current_user.incidents.find(params[:incident_id])
     @memo = @incident.memos.build(memo_params)
-    @memo.save
-    flash.now[:notice] = t("defaults.flash_message.created", item: Memo.model_name.human)
+    if @memo.save
+      flash.now[:notice] = t("defaults.flash_message.created", item: Memo.model_name.human)
+    end
   end
 
   def edit
@@ -20,11 +26,7 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      redirect_to incident_memos_path(@incident, anchor: "memo-record-#{ @memo.id }"),
-      notice: t("defaults.flash_message.updated", item: Memo.model_name.human)
-    else
-      flash.now[:alert] = t("defaults.flash_message.not_updated", item: Memo.model_name.human)
-      render :edit, status: :unprocessable_entity
+      flash.now[:notice] = t("defaults.flash_message.updated", item: Memo.model_name.human)
     end
   end
 

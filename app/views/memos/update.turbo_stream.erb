@@ -1,0 +1,13 @@
+<% if @memo.errors.present? %>
+  <%= turbo_stream.replace "memo-form" do %>
+    <%= render 'memos/form', incident: @incident, memo: @memo %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "memo-record-#{@memo.id}" do %>
+    <%= render 'memos/memo', memo: @memo %>
+  <% end %>
+  <%= turbo_stream.update "flash" do %>
+    <%= render "shared/flash" %>
+  <% end %>
+  <%= turbo_stream.update "modal", "" %>
+<% end %>

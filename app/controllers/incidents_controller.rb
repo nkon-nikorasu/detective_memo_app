@@ -12,10 +12,18 @@ class IncidentsController < ApplicationController
   def create
     @incident = current_user.incidents.build(incident_params)
     if @incident.save
-      redirect_to edit_incident_path(@incident), notice: t("defaults.flash_message.created", item: Incident.model_name.human)
-    else
-      flash.now[:alert] = t("defaults.flash_message.not_created", item: Incident.model_name.human)
-      render :new, status: :unprocessable_entity
+      flash[:notice] = t("defaults.flash_message.created", item: Incident.model_name.human)
+    end
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html do
+        if @incident.persisted?
+          redirect_to incident_path(@incident), status: :see_other
+        else
+          render :new, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -24,18 +32,11 @@ class IncidentsController < ApplicationController
 
   def update
     if @incident.update(incident_params)
-      redirect_to incident_path(@incident), notice: t("defaults.flash_message.updated", item: Incident.model_name.human)
-    else
-      flash.now[:alert] = t("defaults.flash_message.not_updated", item: Incident.model_name.human)
-      render :edit, status: :unprocessable_entity
+      flash.now[:notice] = t("defaults.flash_message.updated", item: Incident.model_name.human)
     end
   end
 
   def show
-    @incident_times = @incident.incident_times.order(:position)
-    @characters = @incident.characters
-    @memo = Memo.new
-    @memos = @incident.memos.order(created_at: :desc)
   end
 
   def destroy

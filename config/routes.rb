@@ -25,14 +25,14 @@ Rails.application.routes.draw do
         get :autocomplete
       end
     end
-    resources :incident_times, only: %i[ index create edit update destroy ] do
+    resources :incident_times, only: %i[ index new create edit update destroy ] do
       member do
         get :move_higher
         get :move_lower
       end
     end
-    resources :characters, only: %I[ index create edit update destroy]
-    resources :memos, only: %I[ index create edit update destroy]
-    resources :character_relationships, only: %i[index create edit update destroy]
+    resources :characters, only: %I[ index new create edit update destroy]
+    resources :memos, only: %I[ index new create edit update destroy]
+    resources :character_relationships, only: %i[index new create edit update destroy]
   end
 end
