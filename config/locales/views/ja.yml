@@ -47,7 +47,7 @@ ja:
   books:
     search:
       title: 書籍検索
-      placeholder: 書籍名または著者名を入力
+      placeholder: 書籍名・著者名・キーワードで検索
       submit: 検索
       register: この書籍を登録
       search_type:
