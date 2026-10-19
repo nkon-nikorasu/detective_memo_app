@@ -7,7 +7,6 @@
   </div>
   <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex justify-center items-center h-auto my-2", data: { controller: "book-autocomplete" } do |f| %>
     <div class="flex w-full max-w-xl" >
-      <%= f.select :search_type, [[t(".search_type.title"), "title"],[t(".search_type.author"), "author"]],{selected: params[:search_type]}, class: "border-2 rounded-xl p-2" %>
       <div
         data-controller="autocomplete"
         data-autocomplete-url-value="<%= autocomplete_incident_books_path(@incident) %>"
@@ -31,7 +30,7 @@
         <p><%= book[:authors]&.join("、") %></p>
         <%= form_with url: incident_books_path(@incident), id: "new_book" do |f| %>
             <%= f.hidden_field :google_books_id, value: book[:id] %>
-            <%= f.submit t('.register'), class: "border-2 rounded-xl h-10 w-auot px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white"%>
+            <%= f.submit t('.register'), class: "border-2 rounded-xl h-10 w-auto px-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white"%>
         <% end %>
       </div>
     <% end %>
