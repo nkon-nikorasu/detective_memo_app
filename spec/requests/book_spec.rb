@@ -124,69 +124,93 @@ RSpec.describe "Books", type: :request do
       allow(GoogleBooksService).to receive(:search).and_return(books)
     end
 
-    context "タイトル検索の場合" do
-      it "GoogleBooksServiceをタイトル検索で呼び出す" do
+    context "検索文字が2文字以上の場合" do
+      it "GoogleBooksServiceを検索キーワードで呼び出す" do
         get autocomplete_incident_books_path(incident),
-            params: {
-              q: "容疑者",
-              search_type: "title"
-            }
+            params: { q: "容疑者" }
 
         expect(GoogleBooksService)
           .to have_received(:search)
-          .with("容疑者", "title")
+          .with("容疑者")
 
         expect(response).to have_http_status(:ok)
       end
 
       it "本のタイトルを候補として表示する" do
         get autocomplete_incident_books_path(incident),
-            params: {
-              q: "容疑者",
-              search_type: "title"
-            }
+            params: { q: "容疑者" }
 
         expect(response.body).to include("容疑者Xの献身")
       end
-    end
 
-    context "著者検索の場合" do
-      it "GoogleBooksServiceを著者検索で呼び出す" do
+      it "検索候補に書籍タイトルと著者名を表示する" do
         get autocomplete_incident_books_path(incident),
-            params: {
-              q: "東野",
-              search_type: "author"
-            }
+            params: { q: "東野" }
 
-        expect(GoogleBooksService)
-          .to have_received(:search)
-          .with("東野", "author")
-
-        expect(response).to have_http_status(:ok)
-      end
-
-      it "重複した著者を1件の候補として表示する" do
-        get autocomplete_incident_books_path(incident),
-            params: {
-              q: "東野",
-              search_type: "author"
-            }
-
-        expect(response.body.scan('data-autocomplete-value="東野圭吾"').count).to eq(1)
+        expect(response.body).to include("容疑者Xの献身")
+        expect(response.body).to include("東野圭吾")
       end
     end
 
     context "検索文字が1文字の場合" do
       it "GoogleBooksServiceを呼び出さない" do
         get autocomplete_incident_books_path(incident),
-            params: {
-              q: "東",
-              search_type: "author"
-            }
+            params: { q: "東" }
 
         expect(GoogleBooksService).not_to have_received(:search)
         expect(response).to have_http_status(:ok)
       end
+    end
+
+    context "Google Books APIの取得に失敗した場合" do
+      before do
+        allow(GoogleBooksService)
+          .to receive(:search)
+          .and_raise(GoogleBooksService::Error)
+      end
+
+      it "空の候補を返す" do
+        get autocomplete_incident_books_path(incident),
+            params: { q: "容疑者" }
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).not_to include('role="option"')
+      end
+    end
+  end
+
+  describe "GET /incidents/:incident_id/books/search" do
+    let(:books) do
+      [
+        {
+          id: "book1",
+          title: "容疑者Xの献身",
+          authors: [ "東野圭吾" ],
+          thumbnail: nil
+        }
+      ]
+    end
+
+    before do
+      allow(GoogleBooksService).to receive(:search).and_return(books)
+    end
+
+    it "検索キーワードをGoogleBooksServiceに渡す" do
+      get search_incident_books_path(incident),
+          params: { search: "容疑者" }
+
+      expect(GoogleBooksService)
+        .to have_received(:search)
+        .with("容疑者")
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "取得した書籍を検索結果に表示する" do
+      get search_incident_books_path(incident),
+          params: { search: "容疑者" }
+
+      expect(response.body).to include("容疑者Xの献身")
     end
   end
 end
