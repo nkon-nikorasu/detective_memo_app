@@ -21,15 +21,7 @@ class CharacterRelationshipsController < ApplicationController
       )
     )
 
-    @character_relationship.source_character =
-      @incident.characters.find_by(
-        id: character_relationship_params[:source_character_id]
-      )
-
-    @character_relationship.target_character =
-      @incident.characters.find_by(
-        id: character_relationship_params[:target_character_id]
-      )
+    assign_characters(@character_relationship)
 
     if @character_relationship.save
       set_relationship_display
@@ -52,15 +44,7 @@ class CharacterRelationshipsController < ApplicationController
       )
     )
 
-    @character_relationship.source_character =
-      @incident.characters.find_by(
-        id: character_relationship_params[:source_character_id]
-      )
-
-    @character_relationship.target_character =
-      @incident.characters.find_by(
-        id: character_relationship_params[:target_character_id]
-      )
+    assign_characters(@character_relationship)
 
     if @character_relationship.save
       set_relationship_display
@@ -92,9 +76,10 @@ class CharacterRelationshipsController < ApplicationController
   end
 
   def relationships_for_incident
+    character_ids = @incident.characters.select(:id)
     CharacterRelationship.where(
-      source_character_id: @incident.characters.ids,
-      target_character_id: @incident.characters.ids
+      source_character_id: character_ids,
+      target_character_id: character_ids
     )
   end
 
@@ -127,6 +112,18 @@ class CharacterRelationshipsController < ApplicationController
     relationships_for_incident.where(
       "source_character_id = :id OR target_character_id = :id",
       id: character.id
-    ).order(:created_at, :id)
+    )
+    .includes(:source_character, :target_character)
+    .order(:created_at, :id)
+  end
+
+  def assign_characters(relationship)
+    relationship.source_character = @incident.characters.find_by(
+      id: character_relationship_params[:source_character_id]
+    )
+
+    relationship.target_character = @incident.characters.find_by(
+      id: character_relationship_params[:target_character_id]
+    )
   end
 end

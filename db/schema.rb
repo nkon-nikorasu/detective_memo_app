@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_29_041951) do
+ActiveRecord::Schema[7.2].define(version: 2026_10_20_085133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_29_041951) do
     t.string "target_to_source_impression"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["source_character_id", "target_character_id"], name: "idx_on_source_character_id_target_character_id_61ef0dac88", unique: true
+    t.index "LEAST(source_character_id, target_character_id), GREATEST(source_character_id, target_character_id)", name: "index_character_relationships_on_unordered_pair", unique: true
     t.index ["source_character_id"], name: "index_character_relationships_on_source_character_id"
     t.index ["target_character_id"], name: "index_character_relationships_on_target_character_id"
   end

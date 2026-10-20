@@ -1,6 +1,7 @@
 <%= form_with model: [incident, character_relationship],
               id: "character-relationship-form",
-              class: "flex flex-col items-center" do |f| %>
+              class: "flex flex-col items-center",
+              data: { controller: "character-select" }  do |f| %>
 
   <%= render "shared/error_messages", object: f.object %>
 
@@ -12,7 +13,13 @@
                               :id,
                               :name,
                               { prompt: "選択してください" },
-                              class: "p-2 border-2 rounded-xl" %>
+                              {
+                                class: "p-2 border-2 rounded-xl",
+                                data: {
+                                  character_select_target: "source",
+                                  action: "change->character-select#updateOptions"
+                                }
+                              } %>
     </div>
 
     <div class="flex flex-col justify-center items-center my-3">
@@ -38,7 +45,13 @@
                               :id,
                               :name,
                               { prompt: "選択してください" },
-                              class: "p-2 border-2 rounded-xl" %>
+                              {
+                                class: "p-2 border-2 rounded-xl",
+                                data: {
+                                  character_select_target: "target",
+                                  action: "change->character-select#updateOptions"
+                                }
+                              } %>
     </div>
 
     <div class="flex flex-col justify-center items-center my-3">
