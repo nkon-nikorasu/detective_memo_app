@@ -1,5 +1,5 @@
 <%- if controller_name != 'sessions' %>
-  <p class="p-2"><%= link_to t(".sign_in"), new_session_path(resource_name), class: "border-2 rounded-xl h-10 w-20 p-2 m-2 hover:bg-gray-500 active:bg-black active:text-white" %></p>
+  <p class="p-2 m-2"><%= link_to controller_name == 'passwords' ? t(".back_to_sign_in") : t(".sign_in"), new_session_path(resource_name), class: "border-2 rounded-xl h-10 w-20 p-2 m-2 hover:bg-gray-500 active:bg-black active:text-white" %></p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -18,8 +18,13 @@
   <p><%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %></p>
 <% end %>
 
-<%- if devise_mapping.omniauthable? %>
-  <div class="actions m-3">
-    <%= button_to t('.sign_in_with_provider.google'), user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "border-2 rounded-xl h-10 w-auto hover:bg-gray-500 active:bg-black active:text-white" %>
+<%- if devise_mapping.omniauthable? && controller_name != 'passwords' %>
+  <div class="flex justify-center m-3">
+    <%= button_to user_google_oauth2_omniauth_authorize_path,
+                  data: { turbo: false },
+                  class: "flex items-center gap-2.5 px-3 h-10 rounded-full border-2 hover:bg-gray-500 active:bg-black active:text-white" do %>
+      <%= image_tag "google_g.svg", alt: "", class: "w-5 h-5" %>
+      <span><%= t('.sign_in_with_provider.google') %></span>
+    <% end %>
   </div>
 <% end %>
