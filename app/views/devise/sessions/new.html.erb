@@ -1,7 +1,8 @@
-<div class="text-center divide-y divide-dashed"> 
+<div class="text-center"> 
   <h2 class="text-3xl"><%= t('.sign_in') %></h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col justify-around gap-5 mb-2" }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col justify-around gap-5 mb-2 border-y-2" }) do |f| %>
+    <%= render "shared/flash" %>
     <div class="field">
       <p><%= f.label :email %></p>
       <p><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border-2 border-slate-900 rounded " %></p>

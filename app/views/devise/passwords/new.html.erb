@@ -1,7 +1,7 @@
-<div class="text-center divide-y divide-dashed">
+<div class="text-center">
   <h2 class="text-3xl"><%= t('.title') %></h2>
-  <h2><%= t('.forgot_your_password') %></h2>
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "flex flex-col gap-2 my-2" }) do |f| %>
+  <h2><%= t('.description') %></h2>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "flex flex-col gap-2 my-2 border-y-2" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field flex flex-col items-center">
