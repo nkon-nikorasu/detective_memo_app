@@ -13,7 +13,7 @@
   </div>
 
   <div class="flex-1 flex flex-col justify-around">
-    <p><%= Incident.human_attribute_name(:tag) %>: <%= incident.tag_i18n %></p>
+    <p><%= Incident.human_attribute_name(:tag) %>: <%= incident.tag_i18n.presence || "未設定" %></p>
     <p class="font-sans">
       <%= t('.created_at') %>: <%= local_time(incident.created_at) %>
     </p>
