@@ -12,7 +12,8 @@ RSpec.describe "Characters", type: :system do
     context "入力内容が正しい場合" do
       it "登場人物を作成できる" do
         visit incident_characters_path(incident)
-        click_button "登録"
+        click_link "人物登録"
+
         within "#character-form" do
           fill_in "人物名", with: "湯川学"
           fill_in "年齢", with: "36"
@@ -21,6 +22,7 @@ RSpec.describe "Characters", type: :system do
           select "男", from: "性別"
           click_button "登録"
         end
+
         expect(page).to have_content("湯川学")
         character = Character.last
 
@@ -34,7 +36,8 @@ RSpec.describe "Characters", type: :system do
     context "名前が空の場合" do
       it "登場人物を作成できない" do
         visit incident_characters_path(incident)
-        click_button "登録"
+        click_link "人物登録"
+
         within "#character-form" do
           fill_in "人物名", with: ""
           fill_in "人物像", with: "人物の説明"
@@ -43,6 +46,7 @@ RSpec.describe "Characters", type: :system do
             click_button "登録"
           }.not_to change(Character, :count)
         end
+
         expect(page).to have_content("人物名を入力してください")
       end
     end

@@ -14,7 +14,7 @@ RSpec.describe "IncidentTimes", type: :system do
         visit incident_incident_times_path(incident)
 
         # フォームを表示
-        click_button "登録"
+        click_link "時系列登録"
 
         within "#time-record-form" do
           fill_in "incident_time_year", with: "2026"
@@ -48,7 +48,7 @@ RSpec.describe "IncidentTimes", type: :system do
       it "時系列を作成できない" do
         visit incident_incident_times_path(incident)
 
-        click_button "登録"
+        click_link "時系列登録"
 
         within "#time-record-form" do
           fill_in "incident_time_year", with: "2026"
