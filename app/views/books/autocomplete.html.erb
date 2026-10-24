@@ -1,12 +1,18 @@
-<% @books.first(10).each do |book| %>
-  <li
-    role="option"
-    data-autocomplete-value="<%= book[:title] %>"
-    class="px-4 py-2 cursor-pointer hover:bg-gray-100"
-  >
-    <%= book[:title] %>
-    <span class="text-gray-500 text-sm">
-      <%= book[:authors].join("、") %>
-    </span>
+<% if @books.any? %>
+  <% @books.first(15).each do |book| %>
+    <li
+      role="option"
+      data-autocomplete-value="<%= book[:title] %>"
+      class="px-4 py-3 cursor-pointer hover:bg-gray-100 aria-selected:bg-blue-200"
+    >
+      <%= book[:title] %>
+      <span class="text-gray-500 text-sm">
+        <%= book[:authors].join("、") %>
+      </span>
+    </li>
+  <% end %>
+<% elsif params[:q].to_s.length >= 2 %>
+  <li class="px-4 py-3 text-gray-500" role="status">
+    候補が見つかりませんでした。検索ボタンからも検索できます。
   </li>
 <% end %>
