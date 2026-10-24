@@ -14,7 +14,7 @@ RSpec.describe "Memos", type: :system do
         visit incident_memos_path(incident)
 
         # フォーム表示
-        click_button "登録"
+        click_link "メモ登録"
 
         within "#memo-form" do
           fill_in "メモ", with: "犯人はAではないかと考えた"
@@ -39,7 +39,7 @@ RSpec.describe "Memos", type: :system do
       it "推理メモを作成できない" do
         visit incident_memos_path(incident)
 
-        click_button "登録"
+        click_link "メモ登録"
 
         within "#memo-form" do
           fill_in "メモ", with: ""

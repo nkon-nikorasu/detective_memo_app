@@ -20,6 +20,10 @@ ja:
   start_pages:
     top:
       title: トップページ
+    privacy:
+      title: プライバシーポリシー
+    terms:
+      title: 利用規約
   incidents:
     index:
       title: 事件記録一覧
@@ -58,7 +62,7 @@ ja:
     edit:
       title: 時系列表編集
     index:
-      title: 時系列登録
+      title: 事件時系列登録
       date: 日時
       index: 時系列一覧
   characters:

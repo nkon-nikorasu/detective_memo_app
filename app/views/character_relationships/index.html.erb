@@ -1,5 +1,6 @@
+<% content_for(:title, t('.title')) %>
 <div class="flex flex-col w-full my-2">
-  <div class="border-b-2 flex justify-center p-2 bg-lime-100">
+  <div class="border-2 flex justify-center p-2 bg-gray-300">
     <p class="text-5xl"><%= t('.title') %></p>
   </div>
   <div id="flash">
@@ -19,7 +20,7 @@
     <%= render "relationships_table" %>
   </div>
   <p class="border-b-2 w-full my-2 text-center"><%= t('.mermaid') %></p>
-  <div id="character-relationship-mermaid" class="w-full overflow-x-auto mt-5 border-2">
+  <div id="character-relationship-mermaid" class="w-full overflow-x-auto mt-5 border-2 rounded-3xl">
     <%= render "mermaid", characters: @characters, relationships: @relationships %>
   </div>
 </div>

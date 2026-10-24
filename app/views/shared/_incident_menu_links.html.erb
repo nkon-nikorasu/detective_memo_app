@@ -12,7 +12,7 @@
   </li>
 
   <li>
-    <%= link_to "人物登録",
+    <%= link_to "登場人物登録",
                 incident_characters_path(@incident),
                 class: "flex flex-1 rounded-xl h-full py-3 mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white #{sidebar_active?('characters') ? 'bg-blue-500 font-bold text-white' : 'bg-blue-200'}" %>
   </li>
@@ -24,7 +24,7 @@
   </li>
 
   <li>
-    <%= link_to "時系列登録",
+    <%= link_to "事件時系列登録",
                 incident_incident_times_path(@incident),
                 class: "flex flex-1 rounded-xl h-full py-3 mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white #{sidebar_active?('incident_times') ? 'bg-blue-500 font-bold text-white' : 'bg-blue-200'}" %>
   </li>
