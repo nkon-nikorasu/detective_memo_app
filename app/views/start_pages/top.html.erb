@@ -1,6 +1,14 @@
 <% content_for(:title, t('.title')) %>
-<div class="bg-[url(top.png)] h-full bg-center bg-cover">
-</div>
+<picture class="block w-full">
+  <source
+    media="(min-width: 768px)"
+    srcset="<%= asset_path('top.png') %>"
+  >
+
+  <%= image_tag "top-mobile.png",
+                class: "block w-full h-auto",
+                alt: "DetectiveMemoの紹介画像" %>
+</picture>
 <section class="mx-auto max-w-6xl px-4 py-12">
   <h2 class="mb-3 text-center text-3xl font-bold">
     DetectiveMemoの使い方
