@@ -1,2 +1,3 @@
-table { border-collapse: collapse; }
+table { border-collapse: collapse;
+        margin-inline: 8px; }
   th, td { border: 1px solid black; }
