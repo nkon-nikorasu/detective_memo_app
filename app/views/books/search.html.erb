@@ -6,23 +6,52 @@
   <div id="flash">
     <%= render 'shared/flash' %>
   </div>
-  <%= form_with url: search_incident_books_path(@incident), method: :get, class: "flex justify-center items-center h-auto my-2", data: { controller: "book-autocomplete" } do |f| %>
+  <%= form_with url: search_incident_books_path(@incident), 
+                method: :get, 
+                class: "flex justify-center items-center h-auto my-2", 
+                data: { 
+                  controller: "book-autocomplete", 
+                  action: "
+                    turbo:submit-start->book-autocomplete#showLoading 
+                    turbo:submit-end->book-autocomplete#hideLoading
+                  " 
+                } do |f| %>
     <div class="flex w-full max-w-xl" >
       <div
         data-controller="autocomplete"
         data-autocomplete-url-value="<%= autocomplete_incident_books_path(@incident) %>"
-        data-action="autocomplete.change->book-autocomplete#submit"
-        class="relative flex-1 ml-2"
+        data-action="
+          autocomplete.change->book-autocomplete#submit
+          loadstart->book-autocomplete#showLoading
+          loadend->book-autocomplete#hideLoading
+        "
+        class="relative flex-1 min-w-0 mx-2 md:mr-0"
       >
-        <%= f.search_field :search, class: "border-2 rounded-xl p-2 w-full", value: params[:search], placeholder: t('.placeholder'), autocomplete: "off", data: { autocomplete_target: "input" } %>
+        <%= f.search_field :search, class: "border-2 rounded-xl p-2 w-full", value: params[:search], placeholder: t('.placeholder'), autocomplete: "off", enterkeyhint: "search", data: { autocomplete_target: "input" } %>
+        <div
+          data-book-autocomplete-target="loading"
+          role="status"
+          class="hidden absolute top-full left-0 z-[60] mt-1 items-center gap-2 rounded-lg border bg-white px-4 py-3 shadow-lg"
+        >
+          <span
+            class="inline-block h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500"
+            aria-hidden="true"
+          ></span>
+          <span>検索中...</span>
+        </div>
         <ul
           data-autocomplete-target="results"
-          class="absolute z-50 w-full mt-1 p-2 bg-white border rounded-xl shadow-lg"
+          data-action="
+            touchstart->book-autocomplete#touchStart
+            touchend->book-autocomplete#touchEnd
+            touchcancel->book-autocomplete#touchEnd
+          "
+          class="absolute z-50 max-h-40 w-full mt-1 p-2 overflow-y-auto overscroll-contain bg-white border rounded-xl shadow-lg"
           hidden
         ></ul>
       </div>
     </div>
-    <%= f.submit t('.submit'), class: "border-2 rounded-xl p-2 ml-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
+    <%= f.submit t('.submit'), class: "hidden md:block border-2 rounded-xl p-2 ml-2 bg-slate-400 hover:bg-gray-500 active:bg-black active:text-white" %>
   <% end %>
   <% if params[:search].present? && @books.empty? && !flash[:alert].present? %>
     <p class="text-center my-6 text-gray-600">
