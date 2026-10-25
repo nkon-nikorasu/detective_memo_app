@@ -1,7 +1,7 @@
 <tr id="time-record-<%= incident_time.id %>">
-  <td class="text-center"><%= display_incident_time(incident_time) %></td>
-  <td class="text-center"><%= incident_time.body %> </td>
-  <td class="text-center">
+  <td class="text-center p-2"><%= display_incident_time(incident_time) %></td>
+  <td class="text-center p-2 break-words"><%= incident_time.body %> </td>
+  <td class="text-center p-2">
     <%= link_to move_higher_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo: false }, class: "flex justify-center w-full hover:bg-gray-100 active:bg-gray-300" do %>
       <%= image_tag "up.png", class: "w-6 h-6 object-contain" %>
     <% end %>
@@ -9,6 +9,6 @@
       <%= image_tag "down.png", class: "w-6 h-6 object-contain" %>
     <% end %>
   </td>
-  <td class="bg-green-300 hover:bg-green-500 active:text-white"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo_frame: "modal" }, class: "flex justify-center w-full" %></td>
-  <td class="bg-red-300 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm', item: IncidentTime.model_name.human)}, class: "flex justify-center w-full" %></td>
+  <td class="bg-green-300 hover:bg-green-500 active:text-white"><%= link_to "更新", edit_incident_incident_time_path(incident_time.incident, incident_time), data: { turbo_frame: "modal" }, class: "flex justify-center items-center w-full p-2 whitespace-nowrap" %></td>
+  <td class="bg-red-300 hover:bg-red-500 active:text-white"><%= link_to "削除", incident_incident_time_path(incident_time.incident, incident_time), data: {turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm', item: IncidentTime.model_name.human)}, class: "flex justify-center items-center w-full p-2 whitespace-nowrap" %></td>
 </tr>
