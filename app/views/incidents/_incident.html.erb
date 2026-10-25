@@ -1,5 +1,5 @@
-<div class="incident-id-<%= incident.id %> flex border min-h-20 mx-2 my-2">
-  <div class="flex-1 flex items-center min-w-0">
+<div class="incident-id-<%= incident.id %> flex flex-col md:flex-row border mx-2 my-2 p-3 gap-3">
+  <div class="flex md:flex-1 items-center gap-3 min-w-0">
     <div class="w-12 h-16 shrink-0 flex items-center justify-center">
       <% if incident.book.present? %>
         <%= image_tag incident_book_thumbnail(incident),
@@ -12,22 +12,25 @@
     </p>
   </div>
 
-  <div class="flex-1 flex flex-col justify-around">
-    <p><%= Incident.human_attribute_name(:tag) %>: <%= incident.tag_i18n.presence || "未設定" %></p>
-    <p class="font-sans">
+  <div class="flex flex-col md:flex-1 justify-around gap-2 min-w-0">
+    <p>
+      <%= Incident.human_attribute_name(:tag) %>: 
+      <%= incident.tag_i18n.presence || "未設定" %>
+    </p>
+    <p class="font-sans break-words">
       <%= t('.created_at') %>: <%= local_time(incident.created_at) %>
     </p>
   </div>
 
-  <div class="flex-1 flex items-center justify-around text-center">
+  <div class="flex md:flex-1 items-center gap-2 text-center">
     <%= link_to "詳細", incident_path(incident),
-                class: "flex flex-1 bg-blue-300 rounded-xl h-full mx-2 items-center justify-center box-border hover:bg-blue-500 active:text-white" %>
+                class: "flex flex-1 bg-blue-300 rounded-xl h-10 md:h-full items-center justify-center hover:bg-blue-500 active:text-white" %>
 
     <%= link_to "削除", incident_path(incident),
                 data: {
                   turbo_method: :delete,
                   turbo_confirm: t('defaults.delete_confirm', item: Incident.model_name.human)
                 },
-                class: "flex flex-1 bg-red-300 rounded-xl h-full mx-2 items-center justify-center hover:bg-red-500 active:text-white" %>
+                class: "flex flex-1 bg-red-300 rounded-xl h-10 md:h-full items-center justify-center hover:bg-red-500 active:text-white" %>
   </div>
 </div>
