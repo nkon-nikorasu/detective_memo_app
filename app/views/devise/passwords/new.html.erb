@@ -6,7 +6,7 @@
 
     <div class="field flex flex-col items-center">
       <p><%= f.label :email %></p>
-      <p><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border-2 rounded-sm" %></p>
+      <p class="w-full md:w-auto"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border-2 rounded-sm w-full md:w-auto min-w-0 p-2" %></p>
     </div>
 
     <div class="actions">
