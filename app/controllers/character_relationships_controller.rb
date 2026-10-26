@@ -57,6 +57,7 @@ class CharacterRelationshipsController < ApplicationController
 
   def destroy
     @character_relationship.destroy!
+    set_selected_character_relationships
     @relationships = relationships_for_incident
     flash.now[:notice] = t("defaults.flash_message.deleted", item: CharacterRelationship.model_name.human)
   end
