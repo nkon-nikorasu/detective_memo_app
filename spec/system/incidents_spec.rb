@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Incident", type: :system do
   let(:user) { create(:user) }
 
@@ -15,7 +16,11 @@ RSpec.describe "Incident", type: :system do
         fill_in "説明", with: "事件についてのテスト内容"
 
         click_button "登録"
-        expect(page).to have_field("事件名", with: "殺人事件")
+        expect(page).to have_content("殺人事件")
+        incident = Incident.find_by!(name: "殺人事件")
+
+        expect(page).to have_current_path(incident_path(incident))
+        expect(incident.body).to eq("事件についてのテスト内容")
       end
     end
   end
