@@ -17,9 +17,9 @@
     <table class="w-full min-w-[650px]">
       <thead>
         <tr>
+          <th class="min-w-24"><%= IncidentTime.human_attribute_name(:position) %></th>
           <th class="min-w-32"><%= t('.date') %></th>
           <th class="min-w-48"><%= IncidentTime.human_attribute_name(:body) %></th>
-          <th class="min-w-24"><%= IncidentTime.human_attribute_name(:position) %></th>
           <th class="min-w-16">更新</th>
           <th class="min-w-16">削除</th>
         </tr>
