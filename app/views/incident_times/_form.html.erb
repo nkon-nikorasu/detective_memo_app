@@ -2,12 +2,12 @@
   <%= form_with model: [incident, incident_time], id: "time-record-form", class: "flex flex-col w-full items-center justify-center" do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="flex flex-col md:flex-row w-full justify-center items-center mt-3 rounded-xl border-2 divide-x divide-gray-300">
-      <%= f.number_field :year, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:year) %>
-      <%= f.number_field :month, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:month) %>
-      <%= f.number_field :date, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:date) %>
-      <%= f.number_field :hour, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:hour) %>
-      <%= f.number_field :minute, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:minute) %>
-      <%= f.number_field :second, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:second) %>
+      <%= f.number_field :year, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:year), min:0, max:9999 %>
+      <%= f.number_field :month, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:month), min:1, max:12 %>
+      <%= f.number_field :date, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:date), min:1, max:31 %>
+      <%= f.number_field :hour, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:hour), min:0, max:23 %>
+      <%= f.number_field :minute, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:minute), min:0, max:59 %>
+      <%= f.number_field :second, class: "w-full h-10 px-2", placeholder: IncidentTime.human_attribute_name(:second), min:0, max:59 %>
     </div>
     <div class="flex flex-col w-full justify-center items-center mb-2">
       <%= f.text_field :body, class: "border-2 h-10 w-full px-2 rounded-xl", placeholder: IncidentTime.human_attribute_name(:body) %>
