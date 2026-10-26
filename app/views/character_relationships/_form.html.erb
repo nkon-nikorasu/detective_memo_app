@@ -1,20 +1,23 @@
 <%= form_with model: [incident, character_relationship],
               id: "character-relationship-form",
-              class: "flex flex-col items-center",
-              data: { controller: "character-select" }  do |f| %>
+              class: "flex flex-col items-center w-full",
+              data: { controller: "character-select" } do |f| %>
 
   <%= render "shared/error_messages", object: f.object %>
 
-  <div class="flex">
-    <div class="flex flex-col justify-center items-center my-3">
+  <%# 人物1・相手からの印象 %>
+  <div class="flex flex-col md:flex-row w-full md:w-auto gap-3 md:gap-0">
+
+    <div class="flex flex-col justify-center items-center my-3 min-w-0">
       <%= f.label :source_character_id %>
+
       <%= f.collection_select :source_character_id,
                               @characters,
                               :id,
                               :name,
                               { prompt: "選択してください" },
                               {
-                                class: "p-2 border-2 rounded-xl",
+                                class: "p-2 border-2 rounded-xl w-full md:w-auto",
                                 data: {
                                   character_select_target: "source",
                                   action: "change->character-select#updateOptions"
@@ -22,31 +25,37 @@
                               } %>
     </div>
 
-    <div class="flex flex-col justify-center items-center my-3">
+    <div class="flex flex-col justify-center items-center my-3 min-w-0">
       <%= f.label :target_to_source_impression %>
+
       <%= f.text_field :target_to_source_impression,
-                       class: "border-2 w-auto h-10 px-2 rounded-xl",
+                       class: "border-2 w-full md:w-auto h-10 px-2 rounded-xl",
                        placeholder: "相手からの印象＊任意" %>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center items-center my-3">
+  <%# 関係 %>
+  <div class="flex flex-col justify-center items-center my-3 w-full md:w-auto">
     <%= f.label :relation %>
+
     <%= f.text_field :relation,
-                     class: "border-2 w-auto h-10 px-2 rounded-xl",
+                     class: "border-2 w-full md:w-auto h-10 px-2 rounded-xl",
                      placeholder: "関係" %>
   </div>
 
-  <div class="flex">
-    <div class="flex flex-col justify-center items-center my-3">
+  <%# 人物2・本人からの印象 %>
+  <div class="flex flex-col md:flex-row w-full md:w-auto gap-3 md:gap-0">
+
+    <div class="flex flex-col justify-center items-center my-3 min-w-0">
       <%= f.label :target_character_id %>
+
       <%= f.collection_select :target_character_id,
                               @characters,
                               :id,
                               :name,
                               { prompt: "選択してください" },
                               {
-                                class: "p-2 border-2 rounded-xl",
+                                class: "p-2 border-2 rounded-xl w-full md:w-auto",
                                 data: {
                                   character_select_target: "target",
                                   action: "change->character-select#updateOptions"
@@ -54,13 +63,16 @@
                               } %>
     </div>
 
-    <div class="flex flex-col justify-center items-center my-3">
+    <div class="flex flex-col justify-center items-center my-3 min-w-0">
       <%= f.label :source_to_target_impression %>
+
       <%= f.text_field :source_to_target_impression,
-                       class: "border-2 w-auto h-10 px-2 rounded-xl",
+                       class: "border-2 w-full md:w-auto h-10 px-2 rounded-xl",
                        placeholder: "本人からの印象＊任意" %>
     </div>
   </div>
+
   <%= hidden_field_tag :character_id, params[:character_id] %>
-  <%= f.submit class: "border-2 rounded-xl h-10 w-20 hover:bg-gray-500 active:bg-black active:text-white" %>
+
+  <%= f.submit class: "border-2 rounded-xl h-10 w-20 mt-3 hover:bg-gray-500 active:bg-black active:text-white" %>
 <% end %>

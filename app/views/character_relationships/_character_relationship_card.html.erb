@@ -1,0 +1,66 @@
+<% other = character_relationship.other_character(@character) %>
+
+<div id="character-relationship-card-id-<%= character_relationship.id %>"
+     class="flex flex-col border-2 rounded-xl mx-2 p-3 gap-3">
+
+  <%# 相手・関係 %>
+  <details class="w-full text-left">
+    <summary class="cursor-pointer font-bold break-words">
+      <%= other.name %>
+    </summary>
+
+    <div class="mt-3 w-full bg-white border rounded-lg shadow-md p-3 text-left">
+      <p class="font-bold mb-2">人物像</p>
+
+      <p class="whitespace-pre-wrap break-words text-left"><%= other.body.presence || "未設定" %></p>
+    </div>
+  </details>
+
+  <p class="bg-green-100 rounded-lg p-2 text-center">
+    関係：<%= character_relationship.relation %>
+  </p>
+
+  <%# 本人から相手への印象 %>
+  <div class="border-2 rounded-lg p-3 min-w-0">
+    <p class="text-sm mb-1 break-words">
+      <%= @character.name %> → <%= other.name %>
+    </p>
+
+    <p class="break-words">
+      <%= character_relationship.impression_from(@character).presence || "未設定" %>
+    </p>
+  </div>
+
+  <%# 相手から本人への印象 %>
+  <div class="border-2 rounded-lg p-3 min-w-0">
+    <p class="text-sm mb-1 break-words">
+      <%= other.name %> → <%= @character.name %>
+    </p>
+
+    <p class="break-words">
+      <%= character_relationship.impression_from(other).presence || "未設定" %>
+    </p>
+  </div>
+
+  <%# 更新・削除 %>
+  <div class="flex gap-2">
+
+    <%= link_to "更新",
+                edit_incident_character_relationship_path(
+                  @incident,
+                  character_relationship,
+                  character_id: @character.id
+                ),
+                data: { turbo_frame: "modal" },
+                class: "flex flex-1 items-center justify-center bg-green-300 rounded-xl p-3 hover:bg-green-500 active:text-white" %>
+
+    <%= link_to "削除",
+                incident_character_relationship_path(@incident, character_relationship, character_id: @character.id),
+                data: {
+                  turbo_method: :delete,
+                  turbo_confirm: t('defaults.delete_confirm', item: CharacterRelationship.model_name.human)
+                },
+                class: "flex flex-1 items-center justify-center bg-red-300 rounded-xl p-3 hover:bg-red-500 active:text-white" %>
+
+  </div>
+</div>

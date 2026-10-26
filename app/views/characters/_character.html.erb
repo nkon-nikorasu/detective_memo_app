@@ -1,27 +1,72 @@
-<div id="character-id-<%= character.id %>" class="flex flex-col border h-auto mx-2 my-2">
-  <div class="flex border-b-1 ">
-    <div class="flex-1 flex flex-col border-r-1 ">
-      <div class="flex items-center justify-center w-auto border-b-1">
-        <p><%= Character.human_attribute_name(:name)%>: <%=character.name %></p>
+<div id="character-id-<%= character.id %>"
+     class="flex flex-col border-2 mx-2 my-2">
+
+  <%# 人物情報・人物像・操作ボタン %>
+  <div class="contents md:flex md:flex-row md:border-b">
+
+    <%# 名前・性別 %>
+    <div class="order-1 flex flex-col md:flex-1 min-w-0 md:border-r">
+
+      <div class="flex items-center justify-center p-2 border-b">
+        <p class="break-words min-w-0">
+          <%= Character.human_attribute_name(:name) %>:
+          <%= character.name %>
+        </p>
       </div>
-      <div class="flex flex-col items-center justify-center">
-        <p><%= Character.human_attribute_name(:gender)%>: <%=character.gender_i18n.presence || "未設定" %></p>
+
+      <div class="flex items-center justify-center p-2 border-b md:border-b-0">
+        <p>
+          <%= Character.human_attribute_name(:gender) %>:
+          <%= character.gender_i18n.presence || "未設定" %>
+        </p>
       </div>
+
     </div>
-    <div class="flex-1 flex flex-col ">
-      <div class="flex items-center justify-center w-auto border-b-1">
-        <p><%= Character.human_attribute_name(:age)%>: <%=character.age.presence || "未設定" %></p>
+
+    <%# 年齢・職業 %>
+    <div class="order-2 flex flex-col md:flex-1 min-w-0">
+
+      <div class="flex items-center justify-center p-2 border-b">
+        <p>
+          <%= Character.human_attribute_name(:age) %>:
+          <%= character.age.presence || "未設定" %>
+        </p>
       </div>
-      <div class="flex items-center justify-center w-auto">
-        <p><%= Character.human_attribute_name(:role)%>: <%=character.role.presence || "未設定" %></p>
+
+      <div class="flex items-center justify-center p-2 border-b md:border-b-0">
+        <p class="break-words min-w-0">
+          <%= Character.human_attribute_name(:role) %>:
+          <%= character.role.presence || "未設定" %>
+        </p>
       </div>
+
     </div>
-    <div class="flex-1 flex flex-col items-center justify-around text-center border-l-1">
-      <%= link_to "編集", edit_incident_character_path(character.incident, character), data: { turbo_frame: "modal" }, class: "flex flex-1 bg-green-300 h-full w-full mx-2 items-center justify-center border-b-1 hover:bg-green-500 active:text-white" %>
-      <%= link_to "削除", incident_character_path(character.incident, character), data: {turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm', item: Character.model_name.human)}, class: "flex flex-1 bg-red-300 h-full w-full mx-2 items-center justify-center hover:bg-red-500 active:text-white" %>
+
+    <%# 編集・削除 %>
+    <div class="order-4 flex md:order-3 md:flex-col md:flex-1 min-w-0 md:border-l">
+
+      <%= link_to "編集",
+                  edit_incident_character_path(character.incident, character),
+                  data: { turbo_frame: "modal" },
+                  class: "flex flex-1 items-center justify-center bg-green-300 p-3 md:p-2 border-r md:border-r-0 md:border-b hover:bg-green-500 active:text-white" %>
+
+      <%= link_to "削除",
+                  incident_character_path(character.incident, character),
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: t('defaults.delete_confirm', item: Character.model_name.human)
+                  },
+                  class: "flex flex-1 items-center justify-center bg-red-300 p-3 md:p-2 hover:bg-red-500 active:text-white" %>
+
     </div>
   </div>
-  <div class="flex items-center justify-left w-full h-auto p-2">
-    <p class="break-words w-full"><%= Character.human_attribute_name(:body)%>: <%=character.body %></p>
+
+  <%# 人物像 %>
+  <div class="order-3 md:order-none flex items-center w-full p-2 min-w-0 border-b md:border-b-0">
+    <p class="break-words min-w-0 w-full">
+      <%= Character.human_attribute_name(:body) %>:
+      <%= character.body %>
+    </p>
   </div>
+
 </div>

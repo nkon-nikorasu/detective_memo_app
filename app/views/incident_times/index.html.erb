@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col mb-3 my-2">
   <div class="border-2 flex justify-center p-2 bg-gray-300">
-    <p class="text-5xl"><%= t('.title') %></p>
+    <p class="text-3xl md:text-5xl"><%= t('.title') %></p>
   </div>
   <div class="flex flex-col items-center py-2">
     <%= link_to "時系列登録",
@@ -13,18 +13,20 @@
   <div id="flash">
     <%= render 'shared/flash' %>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th><%= t('.date') %></th>
-        <th><%= IncidentTime.human_attribute_name(:body) %></th>
-        <th><%= IncidentTime.human_attribute_name(:position) %></th>
-        <th>更新</th>
-        <th>削除</th>
-      </tr>
-    </thead>
-    <tbody id="table-time-record">
-      <%= render @incident_times %>
-    </tbody>
-  </table>
+  <div class="w-full overflow-x-auto">
+    <table class="w-full min-w-[650px]">
+      <thead>
+        <tr>
+          <th class="min-w-32"><%= t('.date') %></th>
+          <th class="min-w-48"><%= IncidentTime.human_attribute_name(:body) %></th>
+          <th class="min-w-24"><%= IncidentTime.human_attribute_name(:position) %></th>
+          <th class="min-w-16">更新</th>
+          <th class="min-w-16">削除</th>
+        </tr>
+      </thead>
+      <tbody id="table-time-record">
+        <%= render @incident_times %>
+      </tbody>
+    </table>
+  </div>
 </div>

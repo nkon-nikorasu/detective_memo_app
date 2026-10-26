@@ -1,20 +1,20 @@
-<header class="flex h-30 items-center">
-  <div>
-    <%= link_to '/' do %>
-      <%= image_tag "logo.png", class: "h-30" %>
+<header class="flex h-20 md:h-30 items-center justify-between gap-2 px-2 md:px-0">
+  <div class="min-w-0 shrink">
+    <%= link_to '/', class: "block" do %>
+      <%= image_tag "logo.png", class: "w-full max-w-36 h-auto md:w-auto md:max-w-none md:h-30", alt: "DetectiveMemo" %>
     <% end %>
   </div>
   
     
   <% if user_signed_in?%>
-    <div class="flex items-center gap-8 ml-auto w-70 mr-4">
-      <%= link_to t('header.incidents'), incidents_path, class: "border-2 p-2 rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
-      <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: "border-2 p-2 rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
+    <div class="flex shrink-0 items-center gap-2 md:gap-8 md:mr-4">
+      <%= link_to t('header.incidents'), incidents_path, class: "whitespace-nowrap border-2 p-2 text-xs sm:text-sm md:text-base rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
+      <%= link_to t('header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: "whitespace-nowrap border-2 p-2 text-xs sm:text-sm md:text-base rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
     </div>
   <% else %>
-    <div class="flex items-center gap-8 ml-auto w-50 mr-4">
-      <%= link_to t('header.sign_up'), new_user_registration_path, class: "border-2 p-2 rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
-      <%= link_to t('header.login'), new_user_session_path, class: "border-2 p-2 rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
+    <div class="flex shrink-0 items-center gap-2 md:gap-8 md:mr-4">
+      <%= link_to t('header.sign_up'), new_user_registration_path, class: "whitespace-nowrap border-2 p-2 text-xs sm:text-sm md:text-base rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
+      <%= link_to t('header.login'), new_user_session_path, class: "whitespace-nowrap border-2 p-2 text-xs sm:text-sm md:text-base rounded-xl hover:bg-gray-500 active:bg-black active:text-white" %>
     </div>
   <% end %>
   
