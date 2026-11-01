@@ -87,7 +87,7 @@
 - DB：PostgreSQL
 - cssフレームワーク: Tailwind
 - デプロイ先：Render
-- 使用予定ライブラリ：device,kaminari,acts_as_list
+- 使用予定ライブラリ：device,kaminari,acts_as_list,mermaid.js,
 ### 画面遷移図
 Figma：https://www.figma.com/design/qLKM0gSeoalkGSAJpm51tw/%E7%84%A1%E9%A1%8C?node-id=0-1&t=M3eWzAyUhTCbeBFr-1
 
@@ -114,8 +114,8 @@ Figma：https://www.figma.com/design/qLKM0gSeoalkGSAJpm51tw/%E7%84%A1%E9%A1%8C?n
 ### 未ログインでも閲覧または利用できるページ
 topページ
 パスワード変更ページ
-お問い合わせページ
-プライバシーポリシー
+利用規約ページ
+プライバシーポリシーページ
 
 ### メールアドレス・パスワード変更確認項目
 - [] メールアドレス
@@ -124,20 +124,20 @@ topページ
 ### ER図
 [![Image from Gyazo](https://i.gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e.png)](https://gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e)
 ### 本サービスの概要（700文字以内）
-このアプリはミステリー小説を読むよむ20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
+このアプリはミステリー小説を読む20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
 ### MVPで実装する予定の機能
 - 機能①事件登録機能、編集、削除
 - 機能②事件時系列登録機能、編集、削除
 - 機能③登場人物登録機能、編集、削除
 - 機能④メモ登録機能、編集、削除
 - 機能⑤ユーザー機能(新規登録、ログイン、ログアウト)
-### テーブル詳細
+## テーブル詳細
 ### usersテーブル(ユーザー情報)
 - email(string)ユーザーのメールアドレス
 - encrypted_password(string)ログイン用パスワード
 ### Incidentsテーブル(事件情報)
 - incident_id(integer)ユーザーid(外部キー)
-- book(string)書籍名
+- book_id(bigint)書籍id(外部キー)
 - name(string)事件名
 - tag(integer)タグ
 - body(text)事件説明
@@ -158,12 +158,21 @@ topページ
 - age(integer)人物年齢
 - role(string)人物職業
 - body(text)人物説明
+### CharacterRelationshipsTableテーブル(登場人物関係)
+- source_character_id(bigint)登場人物id(外部キー)
+- target_character_id(bigint)登場人物id(外部キー)
+- relation(string)関係
+- source_to_target_impression(string)本人からの印象
+- target_to_source_impression(string)相手からの印象
 ### MemosTableテーブル(メモ)
 - incident_id(integer)事件id(外部キー)
 - tag(integer)タグ
 - body(text)メモ内容
-
-
+### Booksテーブル(書籍)
+- google_books_id(string)書籍id
+- title(string)書籍名
+- authors(string)著者名
+- thumbnail_url(string)画像url
 ### ER図の注意点
 - [o] 最新のER図スクリーンショットがPRに掲載されているか
 - [o] テーブル名は複数形になっているか
