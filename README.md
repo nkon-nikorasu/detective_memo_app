@@ -20,10 +20,25 @@
         事件名及び「殺人」、「密室」、「テロ」などのタグ登録
         事件の概要の記述。
         [![Image from Gyazo](https://i.gyazo.com/cf84e629fea22eee4f0c25606bdef860.png)](https://gyazo.com/cf84e629fea22eee4f0c25606bdef860)
-    - 2.登場人物の登録
-        「性別」、「年齢」、「職業」、「人物説明」などの登録
-    - 3.推理メモ
-        任意の段階で読者がまとめた情報を整理した上での真相や犯人の予想の記述
+    - 2.書籍登録
+        書籍登録画面で該当の書籍を書籍名・著者名等のキーワードで検索し事件記録に紐付けできます。
+        [![Image from Gyazo](https://i.gyazo.com/66cbbb79100eeff77154279b846e759e.jpg)](https://gyazo.com/66cbbb79100eeff77154279b846e759e)
+    - 3.登場人物の登録
+        登場人物登録画面で「性別」、「年齢」、「職業」、「人物説明」各項目を登録できます。
+        [![Image from Gyazo](https://i.gyazo.com/ba625cf92929024fffeb46db5b97f6e6.png)](https://gyazo.com/ba625cf92929024fffeb46db5b97f6e6)
+        [![Image from Gyazo](https://i.gyazo.com/da0219ecf817e6830de245b131d21f2f.png)](https://gyazo.com/da0219ecf817e6830de245b131d21f2f)
+    - ４.登場人物関係の登録
+        人物相関図画面で「本人」、「相手」、「関係」、「本人からの印象」、「相手からの印象」各項目を登録できます。登録後、編集後、削除後に下記の人物関係表、人物相関図に即時反映されます。
+        [![Image from Gyazo](https://i.gyazo.com/db3a2d2618b22269fe3ca7e4b21ba196.png)](https://gyazo.com/db3a2d2618b22269fe3ca7e4b21ba196)
+        [![Image from Gyazo](https://i.gyazo.com/b6357bef4cdd266543f8d0b90e2e0306.png)](https://gyazo.com/b6357bef4cdd266543f8d0b90e2e0306)
+    - ５.事件時系列の登録
+        事件時系列登録画面で「日時」、「行動・移動」の項目を入力できます。
+        [![Image from Gyazo](https://i.gyazo.com/ceb82809aa7fe43e8fc36c1402ffab55.png)](https://gyazo.com/ceb82809aa7fe43e8fc36c1402ffab55)
+        [![Image from Gyazo](https://i.gyazo.com/778b94066da6a04450ccd7f3997363a2.png)](https://gyazo.com/778b94066da6a04450ccd7f3997363a2)
+    - ６.推理メモ
+        推理メモ画面で任意の段階で読者がまとめた情報を整理した上での真相や犯人の予想の記述、タグは「推理」、「伏線」を用意しており、その時点での考察や要点を分けられるようになっています。
+        [![Image from Gyazo](https://i.gyazo.com/4b81e1a07103b228386680ab979f2616.png)](https://gyazo.com/4b81e1a07103b228386680ab979f2616)
+        [![Image from Gyazo](https://i.gyazo.com/ddf7966ff2f9401db78420f6af2bc46b.png)](https://gyazo.com/ddf7966ff2f9401db78420f6af2bc46b)
   * 基本事件の登録を必須部分にしてそれ以外を任意で登録することで利用者  が負担を感じずに利用できるように意識しています
 
 ## 既存サービス
@@ -46,7 +61,7 @@
     - 説明
     - 書籍登録
     - 時系列表
-      - 時間、移動場所、行動
+      - 時間、移動場所・行動
     - 登場人物
       - 名前
       - 年齢
