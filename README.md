@@ -18,15 +18,27 @@
   - ミステリ小説読書中に伏線、登場人物、時系列を任意に登録していく
     - 1.小説内の事件の登録
         事件名及び「殺人」、「密室」、「テロ」などのタグ登録
-        読了済みか読書中のページ数登録
-        時系列表の登録
-        メモの登録
-    - 2.登場人物の登録
-        「性別」、「年齢」、「職業」、「人物説明」などの登録
-        時系列表による移動場所、行動の登録
-        各登場人物の関係性の登録
-    - 3.推理メモ
-        任意の段階で読者がまとめた情報を整理した上での真相や犯人の予想の記述
+        事件の概要の記述。
+        [![Image from Gyazo](https://i.gyazo.com/cf84e629fea22eee4f0c25606bdef860.png)](https://gyazo.com/cf84e629fea22eee4f0c25606bdef860)
+    - 2.書籍登録
+        書籍登録画面で該当の書籍を書籍名・著者名等のキーワードで検索し事件記録に紐付けできます。
+        [![Image from Gyazo](https://i.gyazo.com/66cbbb79100eeff77154279b846e759e.jpg)](https://gyazo.com/66cbbb79100eeff77154279b846e759e)
+    - 3.登場人物の登録
+        登場人物登録画面で「性別」、「年齢」、「職業」、「人物説明」各項目を登録できます。
+        [![Image from Gyazo](https://i.gyazo.com/ba625cf92929024fffeb46db5b97f6e6.png)](https://gyazo.com/ba625cf92929024fffeb46db5b97f6e6)
+        [![Image from Gyazo](https://i.gyazo.com/da0219ecf817e6830de245b131d21f2f.png)](https://gyazo.com/da0219ecf817e6830de245b131d21f2f)
+    - ４.登場人物関係の登録
+        人物相関図画面で「本人」、「相手」、「関係」、「本人からの印象」、「相手からの印象」各項目を登録できます。登録後、編集後、削除後に下記の人物関係表、人物相関図に即時反映されます。
+        [![Image from Gyazo](https://i.gyazo.com/db3a2d2618b22269fe3ca7e4b21ba196.png)](https://gyazo.com/db3a2d2618b22269fe3ca7e4b21ba196)
+        [![Image from Gyazo](https://i.gyazo.com/b6357bef4cdd266543f8d0b90e2e0306.png)](https://gyazo.com/b6357bef4cdd266543f8d0b90e2e0306)
+    - ５.事件時系列の登録
+        事件時系列登録画面で「日時」、「行動・移動」の項目を入力できます。
+        [![Image from Gyazo](https://i.gyazo.com/ceb82809aa7fe43e8fc36c1402ffab55.png)](https://gyazo.com/ceb82809aa7fe43e8fc36c1402ffab55)
+        [![Image from Gyazo](https://i.gyazo.com/778b94066da6a04450ccd7f3997363a2.png)](https://gyazo.com/778b94066da6a04450ccd7f3997363a2)
+    - ６.推理メモ
+        推理メモ画面で任意の段階で読者がまとめた情報を整理した上での真相や犯人の予想の記述、タグは「推理」、「伏線」を用意しており、その時点での考察や要点を分けられるようになっています。
+        [![Image from Gyazo](https://i.gyazo.com/4b81e1a07103b228386680ab979f2616.png)](https://gyazo.com/4b81e1a07103b228386680ab979f2616)
+        [![Image from Gyazo](https://i.gyazo.com/ddf7966ff2f9401db78420f6af2bc46b.png)](https://gyazo.com/ddf7966ff2f9401db78420f6af2bc46b)
   * 基本事件の登録を必須部分にしてそれ以外を任意で登録することで利用者  が負担を感じずに利用できるように意識しています
 
 ## 既存サービス
@@ -38,48 +50,45 @@
   - **既存サービスと比較した強み**
     - ミステリ小説の情報整理ツールとして特化しているので時系列や登場人物のテンプレートが詳細としてみやすくなっています
 
-## MVPで作る機能
+## 主な機能
 - 認証機能
   - サインアップ/ログイン・ログアウト機能
+  - google認証
 - メモ機能
-  - 詳細機能
   - 事件登録
-    - 書籍名
     - 事件名
     - タグ
-    - メモ
+    - 説明
+    - 書籍登録
     - 時系列表
-      - 時系列名
-      - 時間、移動場所、行動
+      - 時間、移動場所・行動
     - 登場人物
       - 名前
       - 年齢
       - 性別
       - 職業
       - 人物説明
+    - 登場人物関係
+      - 本人
+      - 相手
+      - 関係
+      - 本人からの印象
+      - 相手からの印象
+      - 人物相関図
+    - 推理メモ
+     - タグ
+     - メモ
+    　
+
 - 編集
 - 削除
-## 本リリースで作る機能
- - 書籍登録(書籍名、画像)
- - UIの改善
- - 登場人物
-  - 行動時系列表
- - 人物相関表(本リリース予定)
-  - 人物A
-  - 人物B
-  - 関係性
-  - AからBの印象
-  - BからAの印象
+ 
 ## 今後取り入れてみたい機能・展開（未定）
- - 検索機能
- - スマホ対応
  - 感想投稿共有機能
- - 人物相関図のグラフ化
- - AI機能
- - googleログイン機能
+ - 登場人物自体に時系列モデルを持たせる。
  * このアプリはどうしても入力が多くなってしまうのでAIによる予測変換などを取り入れたい
 
-## 使用予定の技術
+## 使用技術
 
 - フレームワーク：
   - バックエンド:ruby on rails
@@ -87,12 +96,12 @@
 - DB：PostgreSQL
 - cssフレームワーク: Tailwind
 - デプロイ先：Render
-- 使用予定ライブラリ：device,kaminari,acts_as_list
+- 使用予定ライブラリ：device,kaminari,acts_as_list,mermaid.js,googlebooksapi
 ### 画面遷移図
 Figma：https://www.figma.com/design/qLKM0gSeoalkGSAJpm51tw/%E7%84%A1%E9%A1%8C?node-id=0-1&t=M3eWzAyUhTCbeBFr-1
 
 ### 本サービスの概要（700文字以内）
-推理小説のメモアプリです事件名という形で枠組みを作成しその中で事件の概要や時系列レコードや登場人物を編集で加える形で作成し詳細画面でそのまとめた情報に対する伏線や自分自身の推理をメモで記載します
+推理小説のメモアプリです事件名という形で枠組みを作成しその中で事件の概要や時系列レコードや登場人物、人登場物関係を編集で加える形で作成し詳細画面でそのまとめた情報に対する伏線や自分自身の推理をメモで記載します
 ### READMEに記載した機能
 - [O] ユーザー登録機能
 - [O] ログイン機能
@@ -114,8 +123,8 @@ Figma：https://www.figma.com/design/qLKM0gSeoalkGSAJpm51tw/%E7%84%A1%E9%A1%8C?n
 ### 未ログインでも閲覧または利用できるページ
 topページ
 パスワード変更ページ
-お問い合わせページ
-プライバシーポリシー
+利用規約ページ
+プライバシーポリシーページ
 
 ### メールアドレス・パスワード変更確認項目
 - [] メールアドレス
@@ -124,20 +133,20 @@ topページ
 ### ER図
 [![Image from Gyazo](https://i.gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e.png)](https://gyazo.com/dd52d903fdfd1ea7c6987437ebe0fe0e)
 ### 本サービスの概要（700文字以内）
-このアプリはミステリー小説を読むよむ20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
+このアプリはミステリー小説を読む20~40代の読者向けに作ったアプリです事件の内容や時系列、そこに出てくる登場人物を記録していきそこから物語に出てきた伏線や自らの推理などをメモしていくアプリになります。
 ### MVPで実装する予定の機能
 - 機能①事件登録機能、編集、削除
 - 機能②事件時系列登録機能、編集、削除
 - 機能③登場人物登録機能、編集、削除
 - 機能④メモ登録機能、編集、削除
 - 機能⑤ユーザー機能(新規登録、ログイン、ログアウト)
-### テーブル詳細
+## テーブル詳細
 ### usersテーブル(ユーザー情報)
 - email(string)ユーザーのメールアドレス
 - encrypted_password(string)ログイン用パスワード
 ### Incidentsテーブル(事件情報)
 - incident_id(integer)ユーザーid(外部キー)
-- book(string)書籍名
+- book_id(bigint)書籍id(外部キー)
 - name(string)事件名
 - tag(integer)タグ
 - body(text)事件説明
@@ -158,12 +167,21 @@ topページ
 - age(integer)人物年齢
 - role(string)人物職業
 - body(text)人物説明
+### CharacterRelationshipsTableテーブル(登場人物関係)
+- source_character_id(bigint)登場人物id(外部キー)
+- target_character_id(bigint)登場人物id(外部キー)
+- relation(string)関係
+- source_to_target_impression(string)本人からの印象
+- target_to_source_impression(string)相手からの印象
 ### MemosTableテーブル(メモ)
 - incident_id(integer)事件id(外部キー)
 - tag(integer)タグ
 - body(text)メモ内容
-
-
+### Booksテーブル(書籍)
+- google_books_id(string)書籍id
+- title(string)書籍名
+- authors(string)著者名
+- thumbnail_url(string)画像url
 ### ER図の注意点
 - [o] 最新のER図スクリーンショットがPRに掲載されているか
 - [o] テーブル名は複数形になっているか
