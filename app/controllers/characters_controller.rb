@@ -15,7 +15,6 @@ class CharactersController < ApplicationController
   def create
     @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.build(character_params)
-    @character.save
     if @character.save
       flash.now[:notice] = t("defaults.flash_message.created", item: Character.model_name.human)
     end
