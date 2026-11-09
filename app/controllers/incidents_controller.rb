@@ -1,5 +1,4 @@
 class IncidentsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_incident, only: [ :edit, :update, :destroy, :show ]
   def index
     @incidents = current_user.incidents.includes(:book).order(created_at: :desc).page(params[:page]).per(5)
