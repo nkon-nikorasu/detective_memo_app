@@ -1,19 +1,17 @@
 class CharactersController < ApplicationController
+  before_action :set_incident
   before_action :set_character, only: [ :edit, :update, :destroy ]
 
   def index
-    @incident = current_user.incidents.find(params[:incident_id])
     @characters = @incident.characters.order(created_at: :asc)
     @character = Character.new
   end
 
   def new
-    @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.build
   end
 
   def create
-    @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.build(character_params)
     if @character.save
       flash.now[:notice] = t("defaults.flash_message.created", item: Character.model_name.human)
@@ -36,12 +34,15 @@ class CharactersController < ApplicationController
 
   private
 
+  def set_incident
+    @incident = current_user.incidents.find(params[:incident_id])
+  end
+
   def character_params
     params.require(:character).permit(:name, :gender, :age, :role, :body)
   end
 
   def set_character
-    @incident = current_user.incidents.find(params[:incident_id])
     @character = @incident.characters.find(params[:id])
   end
 end
