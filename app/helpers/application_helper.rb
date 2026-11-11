@@ -5,11 +5,12 @@ module ApplicationHelper
   end
 
   def incident_menu_link(name, path, controller)
-    active_class = if sidebar_active?(controller)
-                    "bg-blue-500 font-bold text-white"
-                  else
-                    "bg-blue-200"
-                  end
+    active_class =
+      if sidebar_active?(controller)
+        "bg-blue-500 font-bold text-white"
+      else
+        "bg-blue-200"
+      end
 
     link_to name, path,
             class: "flex flex-1 rounded-xl h-full py-3 mx-2 items-center justify-center box-border hover:bg-blue-400 active:text-white #{active_class}"
