@@ -54,6 +54,7 @@ ja:
       placeholder: 書籍名・著者名・キーワードで検索
       submit: 検索
       register: この書籍を登録
+      not_data: 該当する書籍が見つかりませんでした。
       search_type:
         prompt: 検索項目を選択してください
         title: タイトル
