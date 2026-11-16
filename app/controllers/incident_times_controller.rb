@@ -1,5 +1,4 @@
 class IncidentTimesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_incident_time, only: [ :edit, :update, :destroy, :move_higher, :move_lower ]
 
   def index

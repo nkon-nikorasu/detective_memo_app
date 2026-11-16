@@ -55,7 +55,7 @@
   <% end %>
   <% if params[:search].present? && @books.empty? && !flash[:alert].present? %>
     <p class="text-center my-6 text-gray-600">
-      該当する書籍が見つかりませんでした。
+      <%= t('.not_data') %>
     </p>
   <% else %>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

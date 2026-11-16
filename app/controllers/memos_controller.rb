@@ -1,5 +1,4 @@
 class MemosController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_memo, only: [ :edit, :update, :destroy ]
 
   def index
